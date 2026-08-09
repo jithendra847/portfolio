@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ExternalLink, Github } from 'lucide-react';
+import { ExternalLink, Github, ArrowRight } from 'lucide-react';
 import { useInView } from '../hooks/useInView';
 import { projects } from '../data/portfolioData';
 
