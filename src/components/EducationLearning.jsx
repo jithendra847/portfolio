@@ -16,16 +16,20 @@ export const EducationLearning = () => {
 
         <div className="section-content">
           <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '4rem', '@media (minWidth: 768px)': { gridTemplateColumns: '1fr 1fr' } }}>
-            {/* Raised Neumorphic Education Card */}
+            {/* Formal Education */}
             <div>
-              <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.4rem', fontWeight: 900, textTransform: 'uppercase', marginBottom: '1.5rem', color: 'var(--text)' }}>
+              <h3 style={{ fontFamily: 'var(--font-mono)', fontSize: '0.85rem', fontWeight: 800, color: 'var(--muted)', letterSpacing: '0.08em', marginBottom: '2rem' }}>
                 FORMAL EDUCATION
               </h3>
-              <div className="neu-raised" style={{ padding: '2rem', borderRadius: 'var(--radius-medium)' }}>
-                <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.5rem', fontWeight: 900, textTransform: 'uppercase', marginBottom: '0.25rem', color: 'var(--text)' }}>{mainEdu.institution}</h4>
-                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.85rem', fontWeight: 800, color: 'var(--accent)', textTransform: 'uppercase', marginBottom: '2rem' }}>{mainEdu.degree}</div>
+              <div>
+                <h4 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.5rem, 3vw, 2.2rem)', fontWeight: 900, textTransform: 'uppercase', marginBottom: '0.5rem', color: 'var(--text)' }}>
+                  {mainEdu.institution}
+                </h4>
+                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '1rem', fontWeight: 800, color: 'var(--accent)', textTransform: 'uppercase', marginBottom: '2rem' }}>
+                  {mainEdu.degree}
+                </div>
 
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', fontFamily: 'var(--font-mono)', fontSize: '0.8rem', fontWeight: 700 }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', fontFamily: 'var(--font-mono)', fontSize: '0.9rem', fontWeight: 700 }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid var(--border)', paddingBottom: '0.5rem' }}>
                     <span style={{ color: 'var(--muted)' }}>TIMELINE</span>
                     <span style={{ color: 'var(--text)' }}>{mainEdu.years}</span>
@@ -44,12 +48,12 @@ export const EducationLearning = () => {
 
             {/* Currently Exploring Section */}
             <div>
-              <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.4rem', fontWeight: 900, textTransform: 'uppercase', marginBottom: '1.5rem', color: 'var(--text)' }}>
-                WHAT I'M PRACTICING NOW
+              <h3 style={{ fontFamily: 'var(--font-mono)', fontSize: '0.85rem', fontWeight: 800, color: 'var(--muted)', letterSpacing: '0.08em', marginBottom: '2rem' }}>
+                CURRENTLY LEARNING
               </h3>
-              <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                 {currentLearning.map((item, idx) => (
-                  <li key={idx} style={{ display: 'flex', alignItems: 'center', gap: '1rem', fontFamily: 'var(--font-mono)', fontSize: '1.1rem', fontWeight: 800, color: 'var(--text)', textTransform: 'uppercase', padding: '1rem', borderBottom: '1px solid var(--border)' }}>
+                  <li key={idx} style={{ display: 'flex', alignItems: 'center', gap: '1rem', fontFamily: 'var(--font-display)', fontSize: 'clamp(1.5rem, 3vw, 2.2rem)', fontWeight: 900, color: 'var(--text)', textTransform: 'uppercase' }}>
                     <span style={{ color: 'var(--accent)' }}>●</span>
                     <span>{item.topic}</span>
                   </li>

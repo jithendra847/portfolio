@@ -10,10 +10,9 @@ export const personalInfo = {
   graduationYear: "2028",
   cgpa: "7.53",
   introStatement: "I build projects to learn, experiment and get better at software development.",
-  aboutEditorial: "I'm Yatam Jithendra, an Information Technology student at NIT Srinagar. I spend most of my time learning DSA, web development, and building small projects to understand how things work by making them.",
+  aboutEditorial: "I'M YATAM JITHENDRA, AN INFORMATION TECHNOLOGY STUDENT AT NIT SRINAGAR.",
   aboutParagraphs: [
-    "I'm currently learning DSA, web development and backend development by building projects and experimenting with different technologies.",
-    "I started with C++ and have been gradually exploring Python and JavaScript."
+    "I'm an IT student at NIT Srinagar who learns mostly by building things. I'm currently working through DSA while experimenting with web development, backend development and different technologies through personal projects."
   ]
 };
 
@@ -21,7 +20,7 @@ export const education = [
   {
     institution: "NIT SRINAGAR",
     degree: "B.Tech — Information Technology",
-    years: "2024 — 2028",
+    years: "2024 → 2028",
     cgpa: "7.53",
     status: "ENROLLED"
   }
@@ -72,7 +71,7 @@ export const arsenalData = [
   {
     id: "python",
     num: "02",
-    name: "PYTHON",
+    name: "Python",
     category: "LANGUAGES",
     type: "SCRIPTING & BACKEND",
     description: "Used for backend API development with FastAPI, data extraction scripts, and FastF1 telemetry processing.",
@@ -82,7 +81,7 @@ export const arsenalData = [
   {
     id: "javascript",
     num: "03",
-    name: "JAVASCRIPT",
+    name: "JavaScript",
     category: "LANGUAGES",
     type: "WEB DEVELOPMENT",
     description: "Core language for building reactive frontends, task UI state, drag-and-drop interfaces, and modern web apps.",
@@ -92,7 +91,7 @@ export const arsenalData = [
   {
     id: "mysql",
     num: "04",
-    name: "MYSQL",
+    name: "MySQL",
     category: "DATABASES",
     type: "RELATIONAL DATABASE",
     description: "Relational database used for creating tables, writing SQL queries, and understanding relational data storage.",
@@ -102,7 +101,7 @@ export const arsenalData = [
   {
     id: "postgresql",
     num: "05",
-    name: "POSTGRESQL",
+    name: "PostgreSQL",
     category: "DATABASES",
     type: "ASYNC SQL DATABASE",
     description: "Relational database used alongside Python FastAPI and AsyncPG for storing telemetry and race data.",
@@ -112,8 +111,8 @@ export const arsenalData = [
   {
     id: "opencv",
     num: "06",
-    name: "OPENCV",
-    category: "LIBRARIES",
+    name: "OpenCV",
+    category: "FAMILIAR",
     type: "COMPUTER VISION",
     description: "Open-source computer vision library used in C++ for camera frame capture and basic image window rendering.",
     appliedIn: ["Camera Opener App"],
@@ -122,7 +121,7 @@ export const arsenalData = [
   {
     id: "git",
     num: "07",
-    name: "GIT",
+    name: "Git",
     category: "TOOLS",
     type: "VERSION CONTROL",
     description: "Version control tool used for managing code revisions, branch commits, and repository history.",
@@ -132,7 +131,7 @@ export const arsenalData = [
   {
     id: "github",
     num: "08",
-    name: "GITHUB",
+    name: "GitHub",
     category: "TOOLS",
     type: "CODE HOSTING",
     description: "Platform for hosting code repositories, project deployment, and open-source code publishing.",
@@ -142,7 +141,7 @@ export const arsenalData = [
   {
     id: "vscode",
     num: "09",
-    name: "VS CODE",
+    name: "VS Code",
     category: "TOOLS",
     type: "CODE EDITOR",
     description: "Primary editor for writing C++, Python, and JavaScript code with integrated terminal workflows.",
@@ -152,7 +151,7 @@ export const arsenalData = [
   {
     id: "antigravity",
     num: "10",
-    name: "ANTIGRAVITY",
+    name: "Antigravity",
     category: "TOOLS",
     type: "AI CODING ASSISTANT",
     description: "AI pair programming assistant used for code generation, architecture planning, and debugging support.",

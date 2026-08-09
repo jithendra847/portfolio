@@ -21,18 +21,18 @@ export const CompetitiveProgramming = () => {
         </header>
 
         <div className="section-content">
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '4rem', marginTop: '2rem' }}>
             
             {/* Codeforces Stat */}
-            <div className="neu-inset" style={{ padding: '3rem 2rem', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', borderRadius: 'var(--radius-medium)' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
               <div>
-                <div style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(3rem, 6vw, 4.5rem)', fontWeight: 900, lineHeight: 1, marginBottom: '1rem', color: 'var(--text)' }}>
+                <div style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(4rem, 8vw, 6rem)', fontWeight: 900, lineHeight: 1, marginBottom: '0.5rem', color: 'var(--text)' }}>
                   {animatedCodeforcesRating}<span style={{ color: 'var(--accent)' }}>.</span>
                 </div>
-                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.85rem', fontWeight: 800, color: 'var(--muted)', textTransform: 'uppercase', marginBottom: '0.5rem', letterSpacing: '0.05em' }}>
+                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.85rem', fontWeight: 800, color: 'var(--muted)', textTransform: 'uppercase', marginBottom: '0.25rem', letterSpacing: '0.05em' }}>
                   {codeforces.platform}
                 </div>
-                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '1rem', fontWeight: 700, color: 'var(--text)', textTransform: 'uppercase' }}>
+                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '1.2rem', fontWeight: 700, color: 'var(--text)', textTransform: 'uppercase' }}>
                   {codeforces.label}
                 </div>
               </div>
@@ -41,8 +41,10 @@ export const CompetitiveProgramming = () => {
                   href={codeforces.profileUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--muted)', marginTop: '2.5rem', textDecoration: 'none', fontFamily: 'var(--font-mono)', fontSize: '0.8rem', fontWeight: 700 }}
+                  style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--accent)', marginTop: '2.5rem', textDecoration: 'none', fontFamily: 'var(--font-mono)', fontSize: '0.85rem', fontWeight: 800, transition: 'color var(--transition-fast)' }}
                   aria-label="Codeforces Profile (opens in new tab)"
+                  onMouseOver={(e) => e.currentTarget.style.color = 'var(--text)'}
+                  onMouseOut={(e) => e.currentTarget.style.color = 'var(--accent)'}
                 >
                   <span>VIEW PROFILE</span>
                   <ArrowUpRight size={16} />
@@ -51,15 +53,15 @@ export const CompetitiveProgramming = () => {
             </div>
 
             {/* GFG Problems Solved */}
-            <div className="neu-inset" style={{ padding: '3rem 2rem', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', borderRadius: 'var(--radius-medium)' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
               <div>
-                <div style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(3rem, 6vw, 4.5rem)', fontWeight: 900, lineHeight: 1, marginBottom: '1rem', color: 'var(--text)' }}>
+                <div style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(4rem, 8vw, 6rem)', fontWeight: 900, lineHeight: 1, marginBottom: '0.5rem', color: 'var(--accent)' }}>
                   {animatedGFGProblems}
                 </div>
-                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.85rem', fontWeight: 800, color: 'var(--muted)', textTransform: 'uppercase', marginBottom: '0.5rem', letterSpacing: '0.05em' }}>
+                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.85rem', fontWeight: 800, color: 'var(--muted)', textTransform: 'uppercase', marginBottom: '0.25rem', letterSpacing: '0.05em' }}>
                   {geeksforgeeks.platform}
                 </div>
-                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '1rem', fontWeight: 700, color: 'var(--text)', textTransform: 'uppercase' }}>
+                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '1.2rem', fontWeight: 700, color: 'var(--text)', textTransform: 'uppercase' }}>
                   PROBLEMS SOLVED
                 </div>
               </div>
@@ -67,8 +69,10 @@ export const CompetitiveProgramming = () => {
                 href={geeksforgeeks.profileUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--muted)', marginTop: '2.5rem', textDecoration: 'none', fontFamily: 'var(--font-mono)', fontSize: '0.8rem', fontWeight: 700 }}
+                style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--accent)', marginTop: '2.5rem', textDecoration: 'none', fontFamily: 'var(--font-mono)', fontSize: '0.85rem', fontWeight: 800, transition: 'color var(--transition-fast)' }}
                 aria-label="GeeksforGeeks Profile (opens in new tab)"
+                onMouseOver={(e) => e.currentTarget.style.color = 'var(--text)'}
+                onMouseOut={(e) => e.currentTarget.style.color = 'var(--accent)'}
               >
                 <span>VIEW PROFILE</span>
                 <ArrowUpRight size={16} />
@@ -76,15 +80,15 @@ export const CompetitiveProgramming = () => {
             </div>
 
             {/* GFG Institution Rank */}
-            <div className="neu-inset" style={{ padding: '3rem 2rem', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', borderRadius: 'var(--radius-medium)' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
               <div>
-                <div style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(3rem, 6vw, 4.5rem)', fontWeight: 900, lineHeight: 1, marginBottom: '1rem', color: 'var(--text)' }}>
-                  #{animatedGFGRank}
+                <div style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(4rem, 8vw, 6rem)', fontWeight: 900, lineHeight: 1, marginBottom: '0.5rem', color: 'var(--text)' }}>
+                  <span style={{ color: 'var(--accent)' }}>#</span>{animatedGFGRank}
                 </div>
-                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.85rem', fontWeight: 800, color: 'var(--muted)', textTransform: 'uppercase', marginBottom: '0.5rem', letterSpacing: '0.05em' }}>
+                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.85rem', fontWeight: 800, color: 'var(--muted)', textTransform: 'uppercase', marginBottom: '0.25rem', letterSpacing: '0.05em' }}>
                   INSTITUTION RANK
                 </div>
-                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '1rem', fontWeight: 700, color: 'var(--text)', textTransform: 'uppercase' }}>
+                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '1.2rem', fontWeight: 700, color: 'var(--text)', textTransform: 'uppercase' }}>
                   NIT SRINAGAR
                 </div>
               </div>
@@ -92,8 +96,10 @@ export const CompetitiveProgramming = () => {
                 href={geeksforgeeks.profileUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--muted)', marginTop: '2.5rem', textDecoration: 'none', fontFamily: 'var(--font-mono)', fontSize: '0.8rem', fontWeight: 700 }}
+                style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--accent)', marginTop: '2.5rem', textDecoration: 'none', fontFamily: 'var(--font-mono)', fontSize: '0.85rem', fontWeight: 800, transition: 'color var(--transition-fast)' }}
                 aria-label="GeeksforGeeks Profile (opens in new tab)"
+                onMouseOver={(e) => e.currentTarget.style.color = 'var(--text)'}
+                onMouseOut={(e) => e.currentTarget.style.color = 'var(--accent)'}
               >
                 <span>VIEW PROFILE</span>
                 <ArrowUpRight size={16} />

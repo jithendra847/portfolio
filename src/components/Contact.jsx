@@ -21,60 +21,45 @@ export const Contact = () => {
         </header>
 
         <div className="section-content">
-          <div className="contact-12col-grid">
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '4rem', '@media (minWidth: 900px)': { gridTemplateColumns: '1fr 1fr' } }}>
             {/* Left Column */}
-            <div className="contact-left-12col">
-              <h3 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(3rem, 8vw, 6rem)', fontWeight: 900, lineHeight: 0.9, textTransform: 'uppercase', marginBottom: '2rem', color: 'var(--text)' }}>
+            <div>
+              <h3 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(4rem, 10vw, 8rem)', fontWeight: 900, lineHeight: 0.9, textTransform: 'uppercase', marginBottom: '2rem', color: 'var(--text)' }}>
                 GET<br />
                 IN<br />
                 TOUCH
               </h3>
+            </div>
 
-              <p style={{ fontFamily: 'var(--font-sans)', fontSize: '1.25rem', color: 'var(--muted)', maxWidth: '400px', lineHeight: 1.6 }}>
-                If you want to talk about a project, an opportunity, or technology, feel free to reach out.
-              </p>
+            {/* Right Column: Contact Details */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem', justifyContent: 'center' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+                <a href={`mailto:${personalInfo.email}`} style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.2rem, 3vw, 2rem)', fontWeight: 800, color: 'var(--text)', textDecoration: 'none', transition: 'color var(--transition-fast)' }} onMouseOver={(e) => e.currentTarget.style.color = 'var(--accent)'} onMouseOut={(e) => e.currentTarget.style.color = 'var(--text)'}>
+                  {personalInfo.email}
+                </a>
+                <a href={`tel:${personalInfo.phone}`} style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.2rem, 3vw, 2rem)', fontWeight: 800, color: 'var(--text)', textDecoration: 'none', transition: 'color var(--transition-fast)' }} onMouseOver={(e) => e.currentTarget.style.color = 'var(--accent)'} onMouseOut={(e) => e.currentTarget.style.color = 'var(--text)'}>
+                  {personalInfo.phone}
+                </a>
+                <div style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.2rem, 3vw, 2rem)', fontWeight: 800, color: 'var(--muted)' }}>
+                  {personalInfo.location}
+                </div>
+              </div>
 
-              <div className="contact-link-list">
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginTop: '1rem' }}>
                 {links.map((link) => (
                   <a
                     key={link.name}
                     href={link.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="contact-link-row"
+                    style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontFamily: 'var(--font-mono)', fontSize: '1.1rem', fontWeight: 800, color: 'var(--text)', textDecoration: 'none', transition: 'color var(--transition-fast)' }}
+                    onMouseOver={(e) => e.currentTarget.style.color = 'var(--accent)'}
+                    onMouseOut={(e) => e.currentTarget.style.color = 'var(--text)'}
                   >
                     <span>{link.name}</span>
-                    <ArrowUpRight size={24} />
+                    <ArrowUpRight size={20} />
                   </a>
                 ))}
-              </div>
-            </div>
-
-            {/* Right Column: Contact Panel */}
-            <div className="contact-right-12col">
-              <div className="contact-info-block neu-raised">
-                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.85rem', fontWeight: 800, color: 'var(--accent)', marginBottom: '1rem' }}>
-                  CONTACT DETAILS
-                </div>
-
-                <div>
-                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.85rem', color: 'var(--muted)', marginBottom: '0.25rem' }}>EMAIL</div>
-                  <div style={{ fontFamily: 'var(--font-sans)', fontSize: '1.1rem', color: 'var(--text)' }}>{personalInfo.email}</div>
-                </div>
-
-                <div style={{ width: '100%', height: '1px', backgroundColor: 'var(--border)' }} />
-
-                <div>
-                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.85rem', color: 'var(--muted)', marginBottom: '0.25rem' }}>PHONE</div>
-                  <div style={{ fontFamily: 'var(--font-sans)', fontSize: '1.1rem', color: 'var(--text)' }}>{personalInfo.phone}</div>
-                </div>
-
-                <div style={{ width: '100%', height: '1px', backgroundColor: 'var(--border)' }} />
-
-                <div>
-                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.85rem', color: 'var(--muted)', marginBottom: '0.25rem' }}>LOCATION</div>
-                  <div style={{ fontFamily: 'var(--font-sans)', fontSize: '1.1rem', color: 'var(--text)' }}>{personalInfo.location}</div>
-                </div>
               </div>
             </div>
           </div>

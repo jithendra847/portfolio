@@ -23,17 +23,18 @@ export const ProjectModal = ({ selectedSlug, onClose, onSelectProject }) => {
 
   return (
     <div className="project-overlay-backdrop" onClick={onClose}>
-      <div className="case-study-modal neu-raised" onClick={(e) => e.stopPropagation()}>
+      <div className="case-study-modal" onClick={(e) => e.stopPropagation()} style={{ background: 'var(--bg)', border: '1px solid var(--border)', borderRadius: 'var(--radius-medium)' }}>
         <button
-          className="modal-close-btn neu-raised"
+          className="modal-close-btn"
           onClick={onClose}
           aria-label="Close Project Overlay"
+          style={{ background: 'var(--surface)', border: '1px solid var(--border)' }}
         >
           <X size={18} />
           <span>CLOSE</span>
         </button>
 
-        <div className="case-study-big-num">{project.num}</div>
+        <div className="case-study-big-num" style={{ color: 'var(--accent)' }}>{project.num}</div>
         <h2 className="case-study-title">{project.title}</h2>
         <div className="case-study-tagline">{project.tagline}</div>
 
@@ -57,7 +58,7 @@ export const ProjectModal = ({ selectedSlug, onClose, onSelectProject }) => {
         <div className="case-study-block-title">TECHNOLOGIES</div>
         <div className="project-tech-tags-heavy" style={{ marginBottom: '2rem' }}>
           {project.technologies.map((tech, idx) => (
-            <span className="tech-tag-heavy" key={idx}>
+            <span className="tech-tag-heavy" key={idx} style={{ background: 'var(--surface)', border: '1px solid var(--border)', color: 'var(--text)' }}>
               {tech}
             </span>
           ))}
@@ -82,7 +83,8 @@ export const ProjectModal = ({ selectedSlug, onClose, onSelectProject }) => {
             href={project.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-heavy btn-heavy-primary neu-raised"
+            className="btn-heavy btn-heavy-primary"
+            style={{ background: 'var(--surface)', border: '1px solid var(--border)', color: 'var(--text)' }}
             aria-label={`View ${project.title} GitHub Repository (opens in new tab)`}
           >
             <Github size={16} />
@@ -94,7 +96,8 @@ export const ProjectModal = ({ selectedSlug, onClose, onSelectProject }) => {
               href={project.demo}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-heavy btn-heavy-secondary neu-raised"
+              className="btn-heavy btn-heavy-secondary"
+              style={{ background: 'var(--accent)', border: '1px solid var(--accent)', color: '#000' }}
               aria-label={`View ${project.title} Live Demo (opens in new tab)`}
             >
               <ExternalLink size={16} />
@@ -106,7 +109,8 @@ export const ProjectModal = ({ selectedSlug, onClose, onSelectProject }) => {
         {/* Modal Case Study Navigation */}
         <div className="case-study-nav-bar">
           <button
-            className="btn-heavy btn-heavy-secondary neu-raised"
+            className="btn-heavy btn-heavy-secondary"
+            style={{ background: 'var(--surface)', border: '1px solid var(--border)' }}
             onClick={onClose}
           >
             <ArrowLeft size={16} />
@@ -115,7 +119,8 @@ export const ProjectModal = ({ selectedSlug, onClose, onSelectProject }) => {
 
           <div style={{ display: 'flex', gap: '0.75rem' }}>
             <button
-              className="btn-heavy btn-heavy-secondary neu-raised"
+              className="btn-heavy btn-heavy-secondary"
+              style={{ background: 'var(--surface)', border: '1px solid var(--border)' }}
               onClick={() => onSelectProject(prevProject.slug)}
             >
               <ArrowLeft size={14} />
@@ -123,7 +128,8 @@ export const ProjectModal = ({ selectedSlug, onClose, onSelectProject }) => {
             </button>
 
             <button
-              className="btn-heavy btn-heavy-secondary neu-raised"
+              className="btn-heavy btn-heavy-secondary"
+              style={{ background: 'var(--surface)', border: '1px solid var(--border)' }}
               onClick={() => onSelectProject(nextProject.slug)}
             >
               <span>NEXT</span>
