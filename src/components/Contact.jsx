@@ -4,10 +4,9 @@ import { useInView } from '../hooks/useInView';
 import { personalInfo, socialLinks } from '../data/portfolioData';
 
 export const Contact = () => {
-  const [ref, inView] = useInView({ threshold: 0.15, triggerOnce: true });
+  const [ref] = useInView({ threshold: 0.15, triggerOnce: true });
 
-  const existingSocials = [
-    { name: 'EMAIL', url: socialLinks.email },
+  const links = [
     { name: 'LINKEDIN', url: socialLinks.linkedin },
     { name: 'GITHUB', url: socialLinks.github },
     { name: 'GEEKSFORGEEKS', url: socialLinks.geeksforgeeks },
@@ -15,98 +14,68 @@ export const Contact = () => {
 
   return (
     <section id="contact" className="section" ref={ref}>
-      <div className="section-container">
-        <div className="animated-divider">
-          <div className={`animated-divider-line ${inView ? 'visible' : ''}`} />
-        </div>
-
-        {/* Stage 1: Section Number & Header */}
-        <header className={`section-header stage-reveal ${inView ? 'is-visible' : ''}`}>
+      <div className="container">
+        <header className="section-header">
           <span className="section-number">07</span>
           <h2 className="section-title">CONTACT</h2>
         </header>
 
         <div className="section-content">
-          {/* Asymmetric Desktop 2-Column Grid (60% / 40%) */}
-          <div className="contact-layout-grid">
-            {/* Stage 2: Left Column (60% Width): Stacked Title & Human Copy */}
-            <div className={`contact-left-col stage-reveal stage-delay-1 ${inView ? 'is-visible' : ''}`}>
-              <h3 className="contact-title-stacked">
+          <div className="contact-12col-grid">
+            {/* Left Column */}
+            <div className="contact-left-12col">
+              <h3 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(3rem, 8vw, 6rem)', fontWeight: 900, lineHeight: 0.9, textTransform: 'uppercase', marginBottom: '2rem', color: 'var(--text)' }}>
                 GET<br />
                 IN<br />
                 TOUCH
               </h3>
 
-              <p className="contact-desc-text">
-                If you want to talk about a project, an opportunity, or just technology, feel free to reach out.
+              <p style={{ fontFamily: 'var(--font-sans)', fontSize: '1.25rem', color: 'var(--muted)', maxWidth: '400px', lineHeight: 1.6 }}>
+                If you want to talk about a project, an opportunity, or technology, feel free to reach out.
               </p>
 
-              <div>
-                <a
-                  id="contact-email-btn"
-                  href={socialLinks.email}
-                  className="contact-email-btn"
-                  aria-label="Send Email to Yatam Jithendra"
-                >
-                  <span>SEND EMAIL</span>
-                  <ArrowUpRight size={20} className="contact-email-arrow" />
-                </a>
+              <div className="contact-link-list">
+                {links.map((link) => (
+                  <a
+                    key={link.name}
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="contact-link-row"
+                  >
+                    <span>{link.name}</span>
+                    <ArrowUpRight size={24} />
+                  </a>
+                ))}
               </div>
             </div>
 
-            {/* Stage 3: Right Column (40% Width): Single Unified Neumorphic Contact Panel */}
-            <div className={`contact-right-col stage-reveal stage-delay-2 ${inView ? 'is-visible' : ''}`}>
-              <div className="contact-info-panel neu-raised">
-                <div className="contact-info-panel-title">
+            {/* Right Column: Contact Panel */}
+            <div className="contact-right-12col">
+              <div className="contact-info-block neu-raised">
+                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.85rem', fontWeight: 800, color: 'var(--accent)', marginBottom: '1rem' }}>
                   CONTACT DETAILS
                 </div>
 
-                <div className="contact-info-field">
-                  <span className="contact-info-label">EMAIL</span>
-                  <span className="contact-info-val">{personalInfo.email}</span>
+                <div>
+                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.85rem', color: 'var(--muted)', marginBottom: '0.25rem' }}>EMAIL</div>
+                  <div style={{ fontFamily: 'var(--font-sans)', fontSize: '1.1rem', color: 'var(--text)' }}>{personalInfo.email}</div>
                 </div>
 
-                <div className="contact-info-divider" />
+                <div style={{ width: '100%', height: '1px', backgroundColor: 'var(--border)' }} />
 
-                <div className="contact-info-field">
-                  <span className="contact-info-label">PHONE</span>
-                  <span className="contact-info-val">{personalInfo.phone}</span>
+                <div>
+                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.85rem', color: 'var(--muted)', marginBottom: '0.25rem' }}>PHONE</div>
+                  <div style={{ fontFamily: 'var(--font-sans)', fontSize: '1.1rem', color: 'var(--text)' }}>{personalInfo.phone}</div>
                 </div>
 
-                <div className="contact-info-divider" />
+                <div style={{ width: '100%', height: '1px', backgroundColor: 'var(--border)' }} />
 
-                <div className="contact-info-field">
-                  <span className="contact-info-label">LOCATION</span>
-                  <span className="contact-info-val">{personalInfo.location}</span>
+                <div>
+                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.85rem', color: 'var(--muted)', marginBottom: '0.25rem' }}>LOCATION</div>
+                  <div style={{ fontFamily: 'var(--font-sans)', fontSize: '1.1rem', color: 'var(--text)' }}>{personalInfo.location}</div>
                 </div>
               </div>
-            </div>
-          </div>
-
-          {/* Stage 4: Interactive Editorial Link Rows */}
-          <div className={`social-links-heavy-list stage-reveal stage-delay-3 ${inView ? 'is-visible' : ''}`}>
-            {existingSocials.map((soc, idx) => (
-              <a
-                key={soc.name}
-                id={`contact-social-link-${soc.name.toLowerCase()}`}
-                href={soc.url}
-                target={soc.name === 'EMAIL' ? '_self' : '_blank'}
-                rel={soc.name === 'EMAIL' ? '' : 'noopener noreferrer'}
-                className="social-link-row"
-                style={{ animationDelay: `${(idx + 1) * 100}ms` }}
-                aria-label={`${soc.name} Contact link`}
-              >
-                <span className="social-link-row-text">{soc.name}</span>
-                <ArrowUpRight size={30} className="social-link-row-arrow" />
-              </a>
-            ))}
-          </div>
-
-          {/* Stage 5: Technical Status Indicator */}
-          <div className={`stage-reveal stage-delay-4 ${inView ? 'is-visible' : ''}`}>
-            <div className="contact-status-bar">
-              <span className="dot">●</span>
-              <span>OPEN TO PROJECTS & OPPORTUNITIES</span>
             </div>
           </div>
         </div>
