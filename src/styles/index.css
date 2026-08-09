@@ -1951,6 +1951,173 @@ section:last-of-type {
 .delay-400 { transition-delay: 400ms; }
 .delay-500 { transition-delay: 500ms; }
 
+/* HERO MICRO-INTERACTIONS */
+
+/* 1. Status Indicator */
+.status-indicator-container {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  position: relative;
+  cursor: default;
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+  animation: statusPulse 2s ease-in-out infinite;
+}
+
+@keyframes statusPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.35; transform: scale(0.85); }
+}
+
+/* 7. Status Tooltip */
+.status-tooltip {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 0.5rem;
+  width: max-content;
+  max-width: 200px;
+  background: var(--surface-raised);
+  border: 1px solid var(--border);
+  padding: 0.75rem 1rem;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  color: var(--text);
+  line-height: 1.4;
+  border-radius: var(--radius-small);
+  box-shadow: 4px 4px 12px rgba(0,0,0,0.5);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(4px);
+  transition: opacity var(--transition-fast), transform var(--transition-fast), visibility var(--transition-fast);
+  z-index: var(--z-floating);
+  text-transform: none;
+  letter-spacing: normal;
+  font-weight: 500;
+}
+
+.status-indicator-container:hover .status-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* 2 & 3. Hero Atmospheric Light */
+.hero-heavy {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-heavy::before {
+  content: "";
+  position: absolute;
+  width: 650px;
+  height: 650px;
+  top: -250px;
+  right: -150px;
+  background: rgba(255, 255, 255, 0.035);
+  filter: blur(120px);
+  border-radius: 50%;
+  pointer-events: none;
+  /* Include CSS variables for cursor movement offset */
+  transform: translate3d(var(--mouse-x, 0px), var(--mouse-y, 0px), 0);
+  animation: heroAtmosphere 10s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+@keyframes heroAtmosphere {
+  from { transform: translate3d(calc(var(--mouse-x, 0px) - 20px), calc(var(--mouse-y, 0px) - 10px), 0); }
+  to { transform: translate3d(calc(var(--mouse-x, 0px) + 30px), calc(var(--mouse-y, 0px) + 20px), 0); }
+}
+
+/* 4. Text Lighting */
+.hero-highlight {
+  color: #FFFFFF;
+  text-shadow: 0 0 24px rgba(255, 255, 255, 0.08);
+}
+
+/* 5. Text Reveal */
+.hero-reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: heroReveal 0.8s var(--motion-easing) forwards;
+}
+
+@keyframes heroReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 6. Highlighted Word Interaction */
+.hero-interactive-word {
+  position: relative;
+  color: #FFFFFF;
+  cursor: default;
+  display: inline-block;
+  transition: color var(--transition-fast);
+}
+
+.hero-interactive-word::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 100%;
+  height: 1px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 250ms ease;
+}
+
+.hero-interactive-word:hover {
+  color: #FFFFFF;
+  text-shadow: 0 0 12px rgba(255,255,255,0.15);
+}
+
+.hero-interactive-word:hover::after {
+  transform: scaleX(1);
+}
+
+/* 8. Scroll Indicator */
+.scroll-arrow-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--muted);
+  letter-spacing: 0.05em;
+  margin-top: 4rem;
+}
+
+.scroll-arrow {
+  animation: scrollArrow 2s ease-in-out infinite;
+  color: var(--accent);
+}
+
+@keyframes scrollArrow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(5px); }
+}
+
 /* Strict Reduced Motion Fallback */
 @media (prefers-reduced-motion: reduce) {
   html {
@@ -1961,7 +2128,7 @@ section:last-of-type {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-  .reveal-up {
+  .reveal-up, .hero-reveal {
     opacity: 1 !important;
     transform: none !important;
   }
