@@ -49,28 +49,28 @@ export const Hero = () => {
       ref={sectionRef}
       style={{ paddingBlock: 'clamp(6rem, 12vw, 10rem)', minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}
     >
-      <div className="container">
+      <div className="container" style={{ position: 'relative', zIndex: 2 }}>
         
-        {/* Step 1: Intro & Status */}
+        {/* Step 1: Intro */}
         <div className="hero-reveal" style={{ animationDelay: '100ms', display: 'flex', alignItems: 'center', gap: '2rem', marginBottom: '3rem' }}>
           <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.85rem', fontWeight: 800, color: 'var(--accent)', letterSpacing: '0.08em' }}>
             01 / INTRO
           </div>
-          
-          <div className="status-indicator-container">
-            <div className="status-dot"></div>
-            <span>CURRENTLY BUILDING</span>
-            <div className="status-tooltip">
-              Currently building projects and learning new technologies.
-            </div>
-          </div>
         </div>
 
-        {/* Step 2 & 3: Name Heading */}
+        {/* Step 2 & 3: Name Heading & Status */}
         <div className="hero-title-wrapper" style={{ marginBottom: '3rem' }}>
-          <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(4.5rem, 12vw, 10rem)', fontWeight: 900, lineHeight: 0.85, letterSpacing: '-0.06em', margin: 0, color: 'var(--text)', textTransform: 'uppercase' }}>
+          <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(3rem, 11vw, 10rem)', fontWeight: 900, lineHeight: 0.9, letterSpacing: '-0.06em', margin: 0, color: 'var(--text)', textTransform: 'uppercase' }}>
             <div className="hero-reveal hero-highlight" style={{ animationDelay: '200ms' }}>YATAM</div>
-            <div className="hero-reveal hero-highlight" style={{ animationDelay: '300ms' }}>JITHENDRA</div>
+            <div className="hero-reveal hero-highlight" style={{ animationDelay: '300ms', display: 'flex', alignItems: 'center', gap: 'clamp(1rem, 4vw, 2.5rem)', flexWrap: 'wrap' }}>
+              <span>JITHENDRA</span>
+              <div className="status-indicator-container" style={{ fontSize: 'clamp(0.7rem, 2vw, 1rem)' }}>
+                <div className="status-dot"></div>
+                <div className="status-tooltip">
+                  Currently building projects and learning new technologies.
+                </div>
+              </div>
+            </div>
           </h1>
         </div>
 
