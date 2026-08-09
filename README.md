@@ -1,21 +1,10 @@
-# Yatam Jithendra — Personal Developer Portfolio
+# Yatam Jithendra — Personal  Portfolio
 
-A modern, minimal, professional developer portfolio website built for **Yatam Jithendra** (B.Tech Information Technology student at NIT Srinagar).
+A modern, minimal, professional developer portfolio website
 
 ![Portfolio Preview Banner](https://img.shields.io/badge/Status-Active%20Internship%20Ready-success?style=for-the-badge)
 ![Tech Stack](https://img.shields.io/badge/Tech-React%20%7C%20Vite%20%7C%20Vanilla%20CSS-blue?style=for-the-badge)
 
----
-
-## 🌟 Highlights & Architecture
-
-- **Minimalist Aesthetics**: Ultra-clean monochrome design system with generous whitespace, subtle borders, and smooth micro-animations.
-- **Light & Dark Theme Toggle**: Native theme toggle with automatic system preference detection and state persistence.
-- **Centralized Portfolio Data Architecture**: All content (personal bio, education, skills, project metadata, competitive programming scores, social links) is maintained in `src/data/portfolioData.js` for quick and clean updates.
-- **Zero Fabrication**: 100% authentic student developer information, featuring verified GitHub project details and verified competitive programming statistics.
-- **Fully Responsive & Accessible**: Mobile drawer navigation, keyboard focus management, semantic HTML5, and OpenGraph SEO tags.
-
----
 
 ## 📁 Repository Structure
 
@@ -89,43 +78,6 @@ To preview the built production bundle locally:
 ```bash
 npm run preview
 ```
-
----
-
-## 🚀 How to Deploy
-
-### Option 1: Deploy to Vercel (Recommended)
-
-1. Push this repository to your GitHub account.
-2. Go to [Vercel](https://vercel.com/) and click **Add New Project**.
-3. Import your `portfolio` repository.
-4. Keep framework preset as **Vite**.
-5. Click **Deploy**. Vercel will automatically build and publish your portfolio with HTTPS.
-
-### Option 2: Deploy to Netlify
-
-1. Log into [Netlify](https://netlify.com/).
-2. Click **Add new site** > **Import an existing project**.
-3. Connect your GitHub repository.
-4. Set Build command to `npm run build` and Publish directory to `dist`.
-5. Click **Deploy Site**.
-
-### Option 3: Deploy to GitHub Pages
-
-1. Install `gh-pages`:
-   ```bash
-   npm install -D gh-pages
-   ```
-2. Add `base: '/<repository-name>/'` in `vite.config.js`.
-3. Add a deploy script to `package.json`:
-   ```json
-   "scripts": {
-     "deploy": "vite build && gh-pages -d dist"
-   }
-   ```
-4. Run `npm run deploy`.
-
----
 
 ## 🛠️ How to Update Portfolio Information
 
