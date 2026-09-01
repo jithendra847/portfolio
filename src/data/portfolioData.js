@@ -1,18 +1,24 @@
 export const personalInfo = {
   name: "Yatam Jithendra",
   headlineName: "YATAM\nJITHENDRA.",
-  title: "INFORMATION TECHNOLOGY STUDENT @ NIT SRINAGAR",
-  email: "yatamjithendra246@gmail.com",
-  phone: "9849142986",
+  title: "IT Student & Software Developer",
+  institution: "NIT Srinagar",
+  degree: "B.Tech in Information Technology",
+  years: "2024 — 2028",
+  graduationYear: "2028",
+  cgpa: "7.53",
   location: "Narsapur, Andhra Pradesh, India",
   locationShort: "NARSAPUR, INDIA",
   educationShort: "NIT SRINAGAR",
-  graduationYear: "2028",
-  cgpa: "7.53",
-  introStatement: "I build projects to learn, experiment and get better at software development.",
-  aboutEditorial: "I'M YATAM JITHENDRA, AN INFORMATION TECHNOLOGY STUDENT AT NIT SRINAGAR.",
+  email: "yatamjithendra246@gmail.com",
+  resumeUrl: "/resume.pdf",
+  tagline: "Building practical software systems with C++, Python, JavaScript and modern backend technologies.",
+  secondaryTagline: "Backend • Full-Stack • AI/ML Learning",
+  availabilityStatement: "Currently open to software engineering, backend, AI/ML and research internship opportunities.",
+  aboutEditorial: "INFORMATION TECHNOLOGY STUDENT AT NIT SRINAGAR",
   aboutParagraphs: [
-    "I'm an IT student at NIT Srinagar who learns mostly by building things. I'm currently working through DSA while experimenting with web development, backend development and different technologies through personal projects."
+    "I am an Information Technology undergraduate at NIT Srinagar focused on building practical, reliable software systems. I prioritize deep engineering fundamentals—focusing heavily on data structures and algorithms in C++, scalable backend APIs in Python, and reactive user interfaces in JavaScript.",
+    "Rather than treating technologies as abstract concepts, I learn by designing and building end-to-end applications. My flagship work includes F1 Hub, a full-stack telemetry and analytics platform powered by FastAPI, PostgreSQL, and React. I am continuously strengthening my problem-solving capabilities on competitive programming platforms and exploring modern backend architecture and machine learning."
   ]
 };
 
@@ -22,39 +28,90 @@ export const education = [
     degree: "B.Tech — Information Technology",
     years: "2024 → 2028",
     cgpa: "7.53",
-    status: "ENROLLED"
+    status: "ENROLLED / UNDERGRADUATE",
+    location: "Srinagar, Jammu & Kashmir, India"
   }
 ];
 
 export const timelineData = [
   {
     year: "2024",
-    title: "Began B.Tech at NIT Srinagar",
-    description: "Started studying Information Technology, learning foundational programming, C++, and discrete mathematics."
+    title: "Enrolled in B.Tech IT at NIT Srinagar",
+    description: "Commenced undergraduate studies in Information Technology, focusing on discrete mathematics, object-oriented programming, and C++ fundamentals."
   },
   {
     year: "2025",
-    title: "Started Building Projects",
-    description: "Built initial software projects including a C++ OpenCV camera feed app and a JavaScript task manager."
+    title: "Systems & Web Fundamentals",
+    description: "Built native C++ OpenCV camera stream handling applications and interactive JavaScript web applications with persistent state."
   },
   {
     year: "2026",
-    title: "Web Apps & Competitive Programming",
-    description: "Built F1 Hub with Python FastAPI & PostgreSQL while practicing algorithms on Codeforces and GeeksforGeeks."
+    title: "Full-Stack Platforms & Algorithmic Growth",
+    description: "Architected F1 Hub with FastAPI and PostgreSQL. Actively solving DSA problems on Codeforces and GeeksforGeeks."
   },
   {
     year: "2028",
     title: "Expected Graduation",
-    description: "Completing B.Tech IT degree with solid software engineering fundamentals."
+    description: "Graduating with a B.Tech in Information Technology and rigorous software engineering foundations."
   }
 ];
 
 export const currentLearning = [
-  { topic: "DSA" },
-  { topic: "Web Development" },
-  { topic: "Backend Development" },
-  { topic: "Python" },
-  { topic: "JavaScript" }
+  { topic: "Data Structures & Algorithms (C++)" },
+  { topic: "Backend System Design & REST APIs" },
+  { topic: "PostgreSQL Database Optimization" },
+  { topic: "Full-Stack Development (React & FastAPI)" },
+  { topic: "Applied AI / ML & Telemetry Data Analysis" }
+];
+
+export const skillsCategories = [
+  {
+    category: "Languages",
+    skills: [
+      { name: "C++", description: "Primary language for data structures, algorithms, and native performance applications." },
+      { name: "Python", description: "Backend development with FastAPI, data processing, and scripting." },
+      { name: "JavaScript", description: "Modern ES6+ for dynamic frontends, state management, and web applications." }
+    ]
+  },
+  {
+    category: "Frontend",
+    skills: [
+      { name: "React", description: "Component-driven single-page web applications with hooks and modular state." },
+      { name: "Vite", description: "Modern build tooling, HMR, and optimized production bundling." },
+      { name: "HTML5", description: "Semantic markup, accessibility standards, and SEO structure." },
+      { name: "CSS3", description: "Vanilla CSS, responsive layouts, CSS Grid, Flexbox, and custom properties." }
+    ]
+  },
+  {
+    category: "Backend",
+    skills: [
+      { name: "FastAPI", description: "High-performance Python web framework for asynchronous REST APIs." },
+      { name: "REST APIs", description: "Resource-oriented routing, serialization, error handling, and JSON contracts." }
+    ]
+  },
+  {
+    category: "Databases",
+    skills: [
+      { name: "PostgreSQL", description: "Relational database management, table schema design, and query optimization." },
+      { name: "MySQL", description: "Relational database modeling, relational integrity, and SQL querying." },
+      { name: "SQLAlchemy", description: "Python Object-Relational Mapper (ORM) for relational database transactions." }
+    ]
+  },
+  {
+    category: "Tools",
+    skills: [
+      { name: "Git", description: "Version control, branching strategies, and commit history management." },
+      { name: "GitHub", description: "Collaborative development, repository management, and project releases." },
+      { name: "VS Code", description: "Primary IDE with integrated debugging, terminal workflows, and linting." }
+    ]
+  },
+  {
+    category: "Applied AI / ML",
+    skills: [
+      { name: "Telemetry & Data Analysis", description: "FastF1 data pipeline processing, session analysis, and statistical visualization." },
+      { name: "Machine Learning Fundamentals", description: "Exploring core supervised learning algorithms and data pre-processing workflows." }
+    ]
+  }
 ];
 
 export const arsenalData = [
@@ -64,8 +121,8 @@ export const arsenalData = [
     name: "C++",
     category: "LANGUAGES",
     type: "PROGRAMMING LANGUAGE",
-    description: "My main language for practicing data structures, algorithms, competitive programming, and basic C++ OpenCV projects.",
-    appliedIn: ["DSA", "Codeforces (867 Rating)", "Camera Opener"],
+    description: "Primary language for competitive programming, algorithmic problem solving, and OpenCV camera processing.",
+    appliedIn: ["DSA in C++", "Codeforces (867 Rating)", "Camera Opener"],
     statusLabel: "PRIMARY LANGUAGE"
   },
   {
@@ -73,10 +130,10 @@ export const arsenalData = [
     num: "02",
     name: "Python",
     category: "LANGUAGES",
-    type: "SCRIPTING & BACKEND",
-    description: "Used for backend API development with FastAPI, data extraction scripts, and FastF1 telemetry processing.",
-    appliedIn: ["FastAPI Backend", "FastF1 Data Scripts"],
-    statusLabel: "PRACTICING & APPLIED"
+    type: "GENERAL-PURPOSE / BACKEND",
+    description: "Core language used for backend API development with FastAPI, data manipulation, and FastF1 race data pipelines.",
+    appliedIn: ["F1 Hub Backend", "FastAPI Services", "Data Processing"],
+    statusLabel: "BACKEND & DATA"
   },
   {
     id: "javascript",
@@ -84,79 +141,79 @@ export const arsenalData = [
     name: "JavaScript",
     category: "LANGUAGES",
     type: "WEB DEVELOPMENT",
-    description: "Core language for building reactive frontends, task UI state, drag-and-drop interfaces, and modern web apps.",
-    appliedIn: ["React Frontends", "dnd-kit Task UI"],
-    statusLabel: "ACTIVE DEVELOPMENT"
+    description: "Core language for interactive user interfaces, client-side state handling, and reactive frontends.",
+    appliedIn: ["React Applications", "Task Management UI", "Portfolio Site"],
+    statusLabel: "ACTIVE FRONTEND"
   },
   {
-    id: "mysql",
+    id: "react",
     num: "04",
-    name: "MySQL",
-    category: "DATABASES",
-    type: "RELATIONAL DATABASE",
-    description: "Relational database used for creating tables, writing SQL queries, and understanding relational data storage.",
-    appliedIn: ["SQL Queries", "Database Schemas"],
-    statusLabel: "WORKING KNOWLEDGE"
+    name: "React",
+    category: "FRONTEND",
+    type: "UI LIBRARY",
+    description: "Building responsive, component-based user interfaces with custom hooks, context state, and accessible interactions.",
+    appliedIn: ["F1 Hub Frontend", "To-Do List Web App", "Developer Portfolio"],
+    statusLabel: "CORE FRONTEND"
+  },
+  {
+    id: "fastapi",
+    num: "05",
+    name: "FastAPI",
+    category: "BACKEND",
+    type: "PYTHON BACKEND FRAMEWORK",
+    description: "Asynchronous Python web framework for structured REST APIs, request validation, and database integration.",
+    appliedIn: ["F1 Hub API Server", "Telemetry Endpoints"],
+    statusLabel: "PRODUCTION BACKEND"
   },
   {
     id: "postgresql",
-    num: "05",
+    num: "06",
     name: "PostgreSQL",
     category: "DATABASES",
-    type: "ASYNC SQL DATABASE",
-    description: "Relational database used alongside Python FastAPI and AsyncPG for storing telemetry and race data.",
-    appliedIn: ["F1 Hub Backend", "SQLAlchemy ORM"],
-    statusLabel: "APPLIED IN PROJECTS"
+    type: "RELATIONAL DATABASE",
+    description: "Relational database used with SQLAlchemy ORM for structured telemetry, driver standings, and race schedules.",
+    appliedIn: ["F1 Hub Data Layer", "Relational Schemas"],
+    statusLabel: "PRIMARY DATABASE"
   },
   {
-    id: "opencv",
-    num: "06",
-    name: "OpenCV",
-    category: "FAMILIAR",
-    type: "COMPUTER VISION",
-    description: "Open-source computer vision library used in C++ for camera frame capture and basic image window rendering.",
-    appliedIn: ["Camera Opener App"],
+    id: "mysql",
+    num: "07",
+    name: "MySQL",
+    category: "DATABASES",
+    type: "RELATIONAL DATABASE",
+    description: "Relational database management system for schema design, SQL relational operations, and database coursework.",
+    appliedIn: ["SQL Queries", "Database Management"],
     statusLabel: "WORKING KNOWLEDGE"
   },
   {
-    id: "git",
-    num: "07",
-    name: "Git",
-    category: "TOOLS",
-    type: "VERSION CONTROL",
-    description: "Version control tool used for managing code revisions, branch commits, and repository history.",
-    appliedIn: ["Version Control", "Commit History"],
-    statusLabel: "DAILY USE"
+    id: "opencv",
+    num: "08",
+    name: "OpenCV",
+    category: "SYSTEMS & TOOLS",
+    type: "COMPUTER VISION LIBRARY",
+    description: "C++ computer vision library used for real-time video capture, frame buffer looping, and window display handling.",
+    appliedIn: ["Camera Opener Application"],
+    statusLabel: "APPLIED IN C++"
   },
   {
-    id: "github",
-    num: "08",
-    name: "GitHub",
+    id: "git",
+    num: "09",
+    name: "Git & GitHub",
     category: "TOOLS",
-    type: "CODE HOSTING",
-    description: "Platform for hosting code repositories, project deployment, and open-source code publishing.",
-    appliedIn: ["Repositories", "Project Releases"],
-    statusLabel: "DAILY USE"
+    type: "VERSION CONTROL & HOSTING",
+    description: "Source code version control, structured commits, branching, and open-source project management.",
+    appliedIn: ["All Software Projects", "Code Publishing"],
+    statusLabel: "DAILY WORKFLOW"
   },
   {
     id: "vscode",
-    num: "09",
+    num: "10",
     name: "VS Code",
     category: "TOOLS",
-    type: "CODE EDITOR",
-    description: "Primary editor for writing C++, Python, and JavaScript code with integrated terminal workflows.",
-    appliedIn: ["Development Workflow", "Debugging"],
+    type: "DEVELOPMENT ENVIRONMENT",
+    description: "Configured development environment for C++, Python, and JavaScript development with integrated debugging.",
+    appliedIn: ["Full Development Lifecycle"],
     statusLabel: "PRIMARY EDITOR"
-  },
-  {
-    id: "antigravity",
-    num: "10",
-    name: "Antigravity",
-    category: "TOOLS",
-    type: "AI CODING ASSISTANT",
-    description: "AI pair programming assistant used for code generation, architecture planning, and debugging support.",
-    appliedIn: ["Pair Programming", "Architecture Planning"],
-    statusLabel: "DAILY USE"
   }
 ];
 
@@ -166,60 +223,92 @@ export const projects = [
     id: "f1-hub",
     slug: "f1-hub",
     title: "F1 HUB",
-    tagline: "FORMULA 1 DATA & ANALYTICS PLATFORM",
-    description: "A Formula 1 website I built to experiment with race data, standings, schedules and different ways of presenting the information.",
-    technologies: ["REACT", "JAVASCRIPT", "PYTHON", "FASTAPI", "POSTGRESQL", "SQLALCHEMY", "FASTF1", "RECHARTS", "TAILWIND CSS"],
+    tagline: "FULL-STACK FORMULA 1 ANALYTICS PLATFORM",
+    isFlagship: true,
+    description: "A full-stack Formula 1 analytics platform integrating race data, standings, schedules and interactive visualizations through a React frontend, FastAPI backend and PostgreSQL data layer.",
+    technologies: ["REACT", "JAVASCRIPT", "FASTAPI", "PYTHON", "POSTGRESQL", "SQLALCHEMY", "FASTF1", "RECHARTS", "TAILWIND CSS"],
     github: "https://github.com/jithendra847/f1-hub",
     demo: "https://f1-hub-mu.vercel.app/",
-    overview: "A Formula 1 website I built to experiment with race data, standings, schedules and different ways of presenting the information.",
-    whyIBuiltIt: "I built this project to practice full-stack development with a Python FastAPI backend, PostgreSQL database, and React data charts.",
+    overview: "F1 Hub is a full-stack web application designed for motorsport enthusiasts and analysts to explore race schedules, current driver/constructor standings, and telemetry insights. It bridges external Formula 1 data feeds with a customized Python backend and interactive client-side charts.",
+    problemMotivation: "Accessing structured, low-latency Formula 1 statistics often requires navigating disparate data sources. I wanted to build an end-to-end full-stack platform that aggregates schedule and championship data while providing clean visual analytics.",
+    architecture: "The application uses a decoupled client-server architecture. The frontend is built with React and Vite, communicating with a Python FastAPI backend. The backend interfaces with external APIs (Jolpica and OpenF1), processes telemetry with FastF1, and stores relational data in PostgreSQL managed via SQLAlchemy ORM.",
     whatIBuilt: [
-      "Fetched race schedules, driver standings, and championship points using Jolpica and OpenF1 APIs.",
-      "Created a Python FastAPI backend with AsyncPG for fast database querying.",
-      "Built interactive lap time comparison charts using React and Recharts."
+      "Designed and deployed a Python FastAPI backend exposing RESTful endpoints for race schedules, driver standings, and lap telemetry.",
+      "Implemented PostgreSQL schema models with SQLAlchemy ORM for relational persistence of race results.",
+      "Integrated FastF1 data libraries to extract and structure driver lap-time telemetry.",
+      "Built an interactive React frontend with Recharts for visual comparison of lap times and race metrics.",
+      "Styled a dark motorsport-themed UI with responsive layouts across mobile and desktop devices."
     ],
-    architecture: "React 18 frontend built with Vite and Tailwind CSS connected to a Python FastAPI server storing data in PostgreSQL.",
-    whatILearned: "Working on this project helped me understand how backend APIs, SQL databases, and frontend chart components fit together."
+    technicalDecisions: [
+      "Chose FastAPI for the backend to leverage Python's asynchronous request handling and native data-science ecosystem (FastF1).",
+      "Selected PostgreSQL with SQLAlchemy ORM to ensure strict data relationships between seasons, rounds, drivers, and race results.",
+      "Used Recharts in React to render performant SVG-based charts with responsive bounding boxes."
+    ],
+    challenges: [
+      "Handling variations in third-party API response structures and normalizing external data before database persistence.",
+      "Managing asynchronous database sessions cleanly across concurrent FastAPI request handlers.",
+      "Ensuring responsive layout rendering for complex statistical tables on mobile viewports."
+    ],
+    whatILearned: "Deepened my practical understanding of full-stack system architecture, asynchronous Python backend workflows, SQL schema modeling, and connecting frontend visualization components with real-world data pipelines."
   },
   {
     num: "02",
     id: "to-do-list",
     slug: "to-do-list",
     title: "TO-DO LIST",
-    tagline: "TASK MANAGEMENT WEB APP",
-    description: "A simple to-do list web app I built to practice JavaScript, drag-and-drop interactions, and local storage task management.",
-    technologies: ["JAVASCRIPT", "REACT", "VITE", "DND-KIT", "CSS3"],
+    tagline: "PERSISTENT DRAG-AND-DROP TASK MANAGER",
+    isFlagship: false,
+    description: "A focused task management web application engineered with React state management, accessible drag-and-drop reordering via dnd-kit, and browser localStorage persistence.",
+    technologies: ["REACT", "JAVASCRIPT", "VITE", "@DND-KIT", "CSS3"],
     github: "https://github.com/jithendra847/To-Do-List",
     demo: "https://to-do-list-bice-iota.vercel.app/",
-    overview: "A simple to-do list web app I built to practice JavaScript, drag-and-drop interactions, and local storage task management.",
-    whyIBuiltIt: "I built this while practicing React state management and learning how drag-and-drop interfaces work.",
+    overview: "A single-page productivity web application that allows users to create, categorize, reorder, and complete tasks with fluid drag-and-drop interactions and persistent browser storage.",
+    problemMotivation: "Built to gain deep hands-on mastery over React state lifecycles, complex component interactions, accessible drag-and-drop primitives, and immutable state updates.",
+    architecture: "Client-side React application utilizing local component state hooks, custom state serializers for localStorage synchronization, and @dnd-kit/sortable for accessible pointer and keyboard-driven reordering.",
     whatIBuilt: [
-      "Added drag-and-drop task reordering with @dnd-kit/sortable.",
-      "Implemented task completion toggles and local storage saving so tasks persist after refreshing.",
-      "Designed a simple responsive interface with CSS custom variables."
+      "Implemented smooth, accessible drag-and-drop task sorting utilizing @dnd-kit/core and @dnd-kit/sortable.",
+      "Built reliable localStorage persistence so task order and completion states survive page refreshes.",
+      "Designed responsive filter tabs (All, Active, Completed) and task counters.",
+      "Created a modular CSS theme with custom CSS properties for clean visual hierarchy."
     ],
-    architecture: "Single-page React application built with Vite using local state hooks and browser localStorage.",
-    whatILearned: "Helped me understand React state updates, drag-and-drop sortable lists, and persistent browser storage."
+    technicalDecisions: [
+      "Selected @dnd-kit over older drag-and-drop libraries for its modern lightweight footprint and built-in keyboard accessibility support.",
+      "Used functional state updates to avoid race conditions during batch state synchronizations."
+    ],
+    challenges: [
+      "Preventing item layout flicker during drag reordering transitions.",
+      "Handling edge-case state persistence when reordering tasks across filtered views."
+    ],
+    whatILearned: "Gained solid practical experience with accessible pointer events, React render optimization, and managing client-side persistent storage."
   },
   {
     num: "03",
     id: "camera-opener",
     slug: "camera-opener",
     title: "CAMERA OPENER",
-    tagline: "WEBCAM CAPTURE & PROCESSING APP",
-    description: "A small C++ project that opens and displays the computer's camera feed using OpenCV.",
-    technologies: ["C++", "OPENCV"],
+    tagline: "NATIVE C++ WEBCAM CAPTURE APPLICATION",
+    isFlagship: false,
+    description: "A native desktop utility written in C++ that interfaces directly with computer webcam hardware to capture, process, and render real-time video frames using OpenCV.",
+    technologies: ["C++", "OPENCV", "SYSTEMS"],
     github: "https://github.com/jithendra847/cam-test",
     demo: null,
-    overview: "A native desktop app written in C++ that captures video frames directly from a connected webcam using OpenCV.",
-    whyIBuiltIt: "I built this project to get hands-on experience with OpenCV and working with camera streams in C++.",
+    overview: "A native C++ desktop software utility that initializes the device's video capture hardware, processes real-time frame buffers, and renders the feed in a native window with responsive input handling.",
+    problemMotivation: "Created to understand low-level hardware interfacing in C++, frame buffer processing loops, and computer vision libraries beyond web browsers.",
+    architecture: "Standalone compiled C++ binary utilizing OpenCV's cv::VideoCapture module for camera stream polling and HighGUI for native window lifecycle management.",
     whatIBuilt: [
-      "Initialized camera video hardware streams using OpenCV cv::VideoCapture.",
-      "Displayed the live camera stream in a native window with frame update loops.",
-      "Handled keyboard input for quitting the window safely."
+      "Initialized camera video capture devices via OpenCV cv::VideoCapture hardware abstraction.",
+      "Engineered a continuous frame-polling execution loop with error handling for dropped frames.",
+      "Configured native window rendering and keyboard input listeners for controlled application termination."
     ],
-    architecture: "C++ desktop application compiled with OpenCV VideoCapture and HighGUI windowing frameworks.",
-    whatILearned: "Helped me learn C++ hardware camera access, video frame loops, and memory cleanup."
+    technicalDecisions: [
+      "Employed direct frame referencing to minimize unnecessary memory allocations per video frame.",
+      "Structured standard C++ RAII wrappers for hardware resource acquisition and clean release."
+    ],
+    challenges: [
+      "Handling camera driver initialization delays and gracefully handling device disconnects.",
+      "Managing consistent frame rate timing inside the processing loop."
+    ],
+    whatILearned: "Understood C++ hardware interfacing, video matrix representation (cv::Mat), memory cleanup lifecycles, and desktop windowing systems."
   }
 ];
 
@@ -244,5 +333,5 @@ export const socialLinks = {
   geeksforgeeks: "https://www.geeksforgeeks.org/profile/yatamjithm778?tab=overview",
   codeforces: "https://codeforces.com/profile/yatamjithendra847",
   email: "mailto:yatamjithendra246@gmail.com",
-  phone: "tel:9849142986"
+  resume: "/resume.pdf"
 };

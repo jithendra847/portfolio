@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://yj-lake-nu.vercel.app/sitemap.xml

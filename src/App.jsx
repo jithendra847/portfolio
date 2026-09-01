@@ -14,22 +14,22 @@ import { ThemeProvider } from './context/ThemeContext';
 
 export function App() {
   const [selectedProjectSlug, setSelectedProjectSlug] = useState(null);
+  const [triggerId, setTriggerId] = useState(null);
 
-  const handleOpenCaseStudy = (slug) => {
+  const handleOpenCaseStudy = (slug, originTriggerId) => {
     setSelectedProjectSlug(slug);
-    document.body.style.overflow = 'hidden';
+    setTriggerId(originTriggerId || null);
   };
 
   const handleCloseCaseStudy = () => {
     setSelectedProjectSlug(null);
-    document.body.style.overflow = 'auto';
   };
 
   return (
     <ThemeProvider>
       <div className="app-root">
         <Navbar />
-        <main>
+        <main id="main-content">
           <Hero />
           <About />
           <Marquee />
@@ -46,6 +46,7 @@ export function App() {
             selectedSlug={selectedProjectSlug}
             onClose={handleCloseCaseStudy}
             onSelectProject={setSelectedProjectSlug}
+            triggerId={triggerId}
           />
         )}
       </div>

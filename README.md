@@ -1,35 +1,55 @@
-# Yatam Jithendra — Personal  Portfolio
+# Yatam Jithendra — Personal Portfolio
 
-A modern, minimal, professional developer portfolio website
+The personal engineering portfolio of **Yatam Jithendra**, an Information Technology undergraduate at **National Institute of Technology (NIT) Srinagar** (2024–2028).
 
-![Portfolio Preview Banner](https://img.shields.io/badge/Status-Active%20Internship%20Ready-success?style=for-the-badge)
-![Tech Stack](https://img.shields.io/badge/Tech-React%20%7C%20Vite%20%7C%20Vanilla%20CSS-blue?style=for-the-badge)
+Built with **React 18**, **Vite**, and **Vanilla CSS** following an industrial/editorial design language, strict accessibility standards, and responsive architecture across all viewports.
 
+---
+
+## 🚀 Key Highlights
+
+- **Flagship Project — F1 Hub**: Full-stack Formula 1 telemetry and analytics platform built with React, Python FastAPI, PostgreSQL, SQLAlchemy, FastF1, and Recharts.
+- **Accessible Interactions**: Keyboard navigable dialogs (`role="dialog"`, `aria-modal="true"`, focus trapping & restoration), accessible touch targets, and pure CSS responsive layouts.
+- **Performance Optimized**: Zero scroll-based state churn, GPU-accelerated CSS transforms, and strict compliance with `prefers-reduced-motion: reduce`.
+- **Privacy & Security**: Zero exposed phone numbers or sensitive keys; verified links to Email, GitHub, LinkedIn, Codeforces, and GeeksforGeeks.
+
+---
 
 ## 📁 Repository Structure
 
 ```text
 portfolio/
-├── index.html                 # Main HTML entry with SEO metadata
+├── index.html                 # Semantic HTML entry with SEO metadata, Open Graph, & theme colors
 ├── package.json               # Dependencies and scripts
 ├── vite.config.js             # Vite development server configuration
+├── public/
+│   ├── favicon.png            # Site favicon
+│   ├── robots.txt             # Search engine crawling rules
+│   └── sitemap.xml            # XML sitemap for SEO discovery
 ├── src/
 │   ├── components/            # Reusable UI components
-│   │   ├── Navbar.jsx         # Sticky navigation header & mobile drawer
-│   │   ├── Hero.jsx           # Developer hero section & quick CTA links
+│   │   ├── Navbar.jsx         # Sticky header with active section spy, theme toggle, and mobile drawer
+│   │   ├── Hero.jsx           # Technical positioning, prominent CTAs (Projects, Resume, GitHub, LinkedIn)
 │   │   ├── About.jsx          # Education & background summary
-│   │   ├── Skills.jsx         # Categorized tech badges
-│   │   ├── Projects.jsx       # Featured project cards with verified tech tags
-│   │   ├── CompetitiveProgramming.jsx # Codeforces & GeeksforGeeks stat blocks
-│   │   ├── Contact.jsx        # Contact information & interactive message form
+│   │   ├── Marquee.jsx        # Lightweight technical ticker
+│   │   ├── Skills.jsx         # Categorized skills (Languages, Frontend, Backend, Databases, Tools)
+│   │   ├── Projects.jsx       # Featured project cards with flagship F1 Hub highlight
+│   │   ├── ProjectModal.jsx   # Accessible case study modal with focus trap and deep technical breakdowns
+│   │   ├── CompetitiveProgramming.jsx # Verified Codeforces & GeeksforGeeks statistics
+│   │   ├── EducationLearning.jsx      # Degree details (NIT Srinagar, CGPA 7.53) & milestones
+│   │   ├── Contact.jsx        # Verified contact channels & availability statement
 │   │   └── Footer.jsx         # Footer with social links & back-to-top button
 │   ├── context/
-│   │   └── ThemeContext.jsx   # Theme switcher provider (Light/Dark mode)
+│   │   └── ThemeContext.jsx   # Theme switcher provider (Dark/Light mode)
 │   ├── data/
-│   │   └── portfolioData.js   # Central configuration for all portfolio content
+│   │   └── portfolioData.js   # Central authoritative configuration for all portfolio content
+│   ├── hooks/
+│   │   ├── useCounter.js      # Animated number counter respecting reduced motion
+│   │   ├── useInView.js       # IntersectionObserver trigger for section reveals
+│   │   └── useScrollLock.js   # Memory-safe body scroll lock during modal lifecycle
 │   ├── styles/
-│   │   └── index.css          # Core CSS design system with CSS custom properties
-│   ├── App.jsx                # Layout wrapper
+│   │   └── index.css          # Modular CSS design system with custom properties & media queries
+│   ├── App.jsx                # Layout wrapper & modal orchestration
 │   └── main.jsx               # React application entry point
 └── README.md                  # Instructions and documentation
 ```
@@ -40,12 +60,10 @@ portfolio/
 
 ### Prerequisites
 
-- **Node.js**: Version 18.0 or higher installed on your machine.
-- **npm** or **yarn**: Node Package Manager.
+- **Node.js**: Version 18.0 or higher.
+- **npm**: Node package manager.
 
 ### 1. Install Dependencies
-
-In the project root directory, run:
 
 ```bash
 npm install
@@ -53,13 +71,11 @@ npm install
 
 ### 2. Start Development Server
 
-To launch the development server with Hot Module Replacement (HMR):
-
 ```bash
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser to view the live website.
+Open [http://localhost:5173](http://localhost:5173) in your browser to view the site.
 
 ---
 
@@ -71,7 +87,7 @@ To create an optimized production bundle:
 npm run build
 ```
 
-This compiles the code into the `dist/` directory with minified JavaScript and optimized CSS.
+This compiles the assets into the `dist/` directory.
 
 To preview the built production bundle locally:
 
@@ -79,16 +95,20 @@ To preview the built production bundle locally:
 npm run preview
 ```
 
-## 🛠️ How to Update Portfolio Information
+---
 
-To modify or add your projects, skills, education, or profile links in the future:
+## 🛠️ Updating Portfolio Information
 
-1. Open [`src/data/portfolioData.js`](file:///d:/portfolio/src/data/portfolioData.js).
-2. Edit the corresponding data objects (`personalInfo`, `education`, `skillsData`, `projects`, `competitiveProgramming`, or `socialLinks`).
-3. Save the file — the application will automatically re-render with the new data!
+All content is centrally managed in [`src/data/portfolioData.js`](src/data/portfolioData.js):
+
+- `personalInfo`: Name, title, tagline, email, CGPA, resume URL, and availability statement.
+- `skillsCategories`: Structured skill lists categorized by Languages, Frontend, Backend, Databases, Tools, and Applied AI/ML.
+- `projects`: Detailed project records including flagship flags, descriptions, case study sections, and repository links.
+- `competitiveProgramming`: Verified contest ratings and problem counts for Codeforces and GeeksforGeeks.
+- `education` & `timelineData`: Academic credentials and development milestones.
 
 ---
 
 ## 📄 License
 
-This portfolio website is open-source and free to use under the MIT License.
+Open-source and free to use under the [MIT License](LICENSE).

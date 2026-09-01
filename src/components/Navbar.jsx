@@ -1,40 +1,51 @@
-import React, { useState, useEffect } from 'react';
-import { Sun, Moon, Menu, X } from 'lucide-react';
-import { useTheme } from '../context/ThemeContext';
+import React, { useState, useEffect, useRef } from 'react';
+import { Menu, X, FileText } from 'lucide-react';
+import { personalInfo } from '../data/portfolioData';
 
 export const Navbar = () => {
-  const { theme, toggleTheme } = useTheme();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
-  const [activeSection, setActiveSection] = useState('WORK');
+  const [activeSection, setActiveSection] = useState('HOME');
+  const drawerRef = useRef(null);
+  const menuToggleRef = useRef(null);
 
   const links = [
     { name: 'HOME', href: '#home' },
     { name: 'ABOUT', href: '#about' },
-    { name: 'STACK', href: '#skills' },
-    { name: 'WORK', href: '#projects' },
-    { name: 'CP', href: '#cp' },
+    { name: 'SKILLS', href: '#skills' },
+    { name: 'PROJECTS', href: '#projects' },
+    { name: 'PROBLEM SOLVING', href: '#cp' },
     { name: 'CONTACT', href: '#contact' },
   ];
 
+  // Scroll listener for progress bar, navbar shadow, and active section
   useEffect(() => {
+    let ticking = false;
+
     const handleScroll = () => {
-      const scrollTop = window.scrollY || document.documentElement.scrollTop;
-      const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      const progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
-      setScrollProgress(progress);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const scrollTop = window.scrollY || document.documentElement.scrollTop;
+          const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+          const progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+          setScrollProgress(progress);
+          setScrolled(scrollTop > 30);
 
-      setScrolled(window.scrollY > 40);
+          const sectionElements = links
+            .map(l => ({ name: l.name, el: document.querySelector(l.href) }))
+            .filter(item => item.el !== null);
 
-      const sections = links.map(l => document.querySelector(l.href)).filter(Boolean);
-      const scrollPos = window.scrollY + 200;
-
-      for (let i = sections.length - 1; i >= 0; i--) {
-        if (sections[i].offsetTop <= scrollPos) {
-          setActiveSection(links[i].name);
-          break;
-        }
+          const scrollPos = scrollTop + 250;
+          for (let i = sectionElements.length - 1; i >= 0; i--) {
+            if (sectionElements[i].el.offsetTop <= scrollPos) {
+              setActiveSection(sectionElements[i].name);
+              break;
+            }
+          }
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 
@@ -42,16 +53,57 @@ export const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Keyboard accessibility for mobile menu (Escape to close)
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape' && mobileOpen) {
+        setMobileOpen(false);
+        if (menuToggleRef.current) {
+          menuToggleRef.current.focus();
+        }
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [mobileOpen]);
+
+  // Click outside to close mobile drawer
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (
+        mobileOpen &&
+        drawerRef.current &&
+        !drawerRef.current.contains(e.target) &&
+        menuToggleRef.current &&
+        !menuToggleRef.current.contains(e.target)
+      ) {
+        setMobileOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('touchstart', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('touchstart', handleClickOutside);
+    };
+  }, [mobileOpen]);
+
   return (
     <>
-      <div className="scroll-progress-bar" style={{ width: `${scrollProgress}%`, zIndex: 9999 }} />
+      <div 
+        className="scroll-progress-bar" 
+        style={{ width: `${scrollProgress}%` }}
+        aria-hidden="true" 
+      />
       <header className={`header-nav ${scrolled ? 'scrolled' : ''}`}>
         <div className="container header-container">
-          <a href="#home" className="nav-logo" aria-label="Yatam Jithendra Home">
+          <a href="#home" className="nav-logo" aria-label="Yatam Jithendra Portfolio Home">
             YJ<span className="accent">.</span>
           </a>
 
-          <nav aria-label="Main Navigation">
+          <nav className="desktop-nav" aria-label="Primary Navigation">
             <ul className="header-links">
               {links.map((link) => (
                 <li key={link.name}>
@@ -67,41 +119,70 @@ export const Navbar = () => {
           </nav>
 
           <div className="header-actions">
-            <button
-              className="theme-toggle-box neu-raised"
-              onClick={toggleTheme}
-              aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
-              title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+            <a
+              href={personalInfo.resumeUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="nav-resume-btn"
+              aria-label="View Resume (opens in new tab)"
             >
-              {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
-            </button>
+              <FileText size={14} aria-hidden="true" />
+              <span>RESUME</span>
+            </a>
 
             <button
+              ref={menuToggleRef}
               className="mobile-toggle-btn"
-              onClick={() => setMobileOpen(!mobileOpen)}
-              aria-label="Toggle Navigation Drawer"
+              onClick={() => setMobileOpen((prev) => !prev)}
+              aria-label={mobileOpen ? "Close Navigation Menu" : "Open Navigation Menu"}
               aria-expanded={mobileOpen}
+              aria-controls="mobile-navigation-drawer"
+              type="button"
             >
-              {mobileOpen ? <X size={22} /> : <Menu size={22} />}
+              {mobileOpen ? <X size={22} aria-hidden="true" /> : <Menu size={22} aria-hidden="true" />}
             </button>
           </div>
         </div>
 
-        {mobileOpen && (
-          <div className="mobile-menu-drawer open">
-            {links.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                className="mobile-menu-link"
-                onClick={() => setMobileOpen(false)}
-              >
-                {link.name}
-              </a>
-            ))}
-          </div>
-        )}
+        {/* Mobile Navigation Drawer */}
+        <div 
+          id="mobile-navigation-drawer"
+          ref={drawerRef}
+          className={`mobile-menu-drawer ${mobileOpen ? 'open' : ''}`}
+          aria-hidden={!mobileOpen}
+        >
+          <nav aria-label="Mobile Navigation">
+            <ul className="mobile-menu-list">
+              {links.map((link) => (
+                <li key={link.name}>
+                  <a
+                    href={link.href}
+                    className={`mobile-menu-link ${activeSection === link.name ? 'active' : ''}`}
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    {link.name}
+                  </a>
+                </li>
+              ))}
+              <li className="mobile-menu-divider" />
+              <li>
+                <a
+                  href={personalInfo.resumeUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mobile-resume-link"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  <FileText size={16} aria-hidden="true" />
+                  <span>VIEW RESUME</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
       </header>
     </>
   );
 };
+
+export default Navbar;

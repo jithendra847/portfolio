@@ -13,23 +13,58 @@ export const About = () => {
           <h2 className="section-title">ABOUT ME</h2>
         </header>
 
-        <div className="section-content">
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(12, 1fr)', gap: '2rem' }}>
-            {/* The narrative takes up 8 columns */}
-            <div style={{ gridColumn: '1 / -1', '@media (minWidth: 768px)': { gridColumn: '1 / 9' }, maxWidth: '800px' }}>
-              <h3 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.5rem, 3vw, 2.2rem)', fontWeight: 900, textTransform: 'uppercase', lineHeight: 1.1, marginBottom: '2rem', color: 'var(--text)' }}>
-                I'M YATAM JITHENDRA, AN INFORMATION TECHNOLOGY STUDENT AT NIT SRINAGAR.
+        <div className={`section-content about-section-content ${inView ? 'is-visible' : ''}`}>
+          <div className="about-grid">
+            
+            {/* Main Editorial Narrative */}
+            <div className="about-narrative">
+              <h3 className="about-headline">
+                B.TECH INFORMATION TECHNOLOGY STUDENT AT NIT SRINAGAR, BUILDING SOFTWARE SYSTEMS WITH PURPOSE.
               </h3>
               
-              {personalInfo.aboutParagraphs.map((paragraph, idx) => (
-                <p key={idx} style={{ color: 'var(--muted)', fontSize: 'clamp(1.05rem, 1.5vw, 1.25rem)', lineHeight: 1.7, marginBottom: '1.5rem' }}>
-                  {paragraph}
-                </p>
-              ))}
+              <div className="about-paragraphs">
+                {personalInfo.aboutParagraphs.map((paragraph, idx) => (
+                  <p key={idx} className="about-paragraph">
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
             </div>
+
+            {/* Quick Principles / Highlights Card */}
+            <div className="about-sidebar neu-raised">
+              <h4 className="about-sidebar-title">CORE FOCUS AREAS</h4>
+              
+              <ul className="about-focus-list">
+                <li className="about-focus-item">
+                  <span className="focus-number">01</span>
+                  <div>
+                    <strong>Data Structures &amp; Algorithms</strong>
+                    <p>Continuous problem-solving in C++ across arrays, graphs, trees, and dynamic programming.</p>
+                  </div>
+                </li>
+                <li className="about-focus-item">
+                  <span className="focus-number">02</span>
+                  <div>
+                    <strong>Backend Architecture</strong>
+                    <p>Designing performant REST APIs with Python FastAPI, relational models in PostgreSQL, and SQLAlchemy ORM.</p>
+                  </div>
+                </li>
+                <li className="about-focus-item">
+                  <span className="focus-number">03</span>
+                  <div>
+                    <strong>Full-Stack Web Development</strong>
+                    <p>Building clean, responsive client-side applications with React, Vite, and modular CSS architecture.</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
           </div>
         </div>
       </div>
     </section>
   );
 };
+
+export default About;

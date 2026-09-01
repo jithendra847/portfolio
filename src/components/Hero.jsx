@@ -1,113 +1,156 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { ArrowDown } from 'lucide-react';
+import React, { useEffect, useRef } from 'react';
+import { ArrowDown, FolderGit2, FileText, Github, Linkedin } from 'lucide-react';
+import { personalInfo, socialLinks } from '../data/portfolioData';
 
 export const Hero = () => {
-  const sectionRef = useRef(null);
-  const [scrollY, setScrollY] = useState(0);
+  const heroRef = useRef(null);
 
   useEffect(() => {
-    // Media query to check if user prefers reduced motion
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (prefersReducedMotion.matches) return;
+
+    let rafId = null;
+    let targetX = 0;
+    let targetY = 0;
 
     const handleMouseMove = (e) => {
-      if (prefersReducedMotion.matches || window.innerWidth < 768) return;
-      if (!sectionRef.current) return;
+      // Avoid running heavy calculations on narrow viewports
+      if (window.innerWidth < 768) return;
 
       const { clientX, clientY } = e;
       const { innerWidth, innerHeight } = window;
 
-      // Calculate relative position (-1 to 1)
-      const xPos = (clientX / innerWidth) * 2 - 1;
-      const yPos = (clientY / innerHeight) * 2 - 1;
+      // Normalized coordinates (-1 to 1)
+      const normX = (clientX / innerWidth) * 2 - 1;
+      const normY = (clientY / innerHeight) * 2 - 1;
 
-      // Max offset 25px
-      const offsetX = xPos * 25;
-      const offsetY = yPos * 25;
+      targetX = normX * 22;
+      targetY = normY * 22;
 
-      sectionRef.current.style.setProperty('--mouse-x', `${offsetX}px`);
-      sectionRef.current.style.setProperty('--mouse-y', `${offsetY}px`);
+      if (!rafId) {
+        rafId = window.requestAnimationFrame(() => {
+          if (heroRef.current) {
+            heroRef.current.style.setProperty('--mouse-x', `${targetX}px`);
+            heroRef.current.style.setProperty('--mouse-y', `${targetY}px`);
+          }
+          rafId = null;
+        });
+      }
     };
 
-    const handleScroll = () => {
-      if (prefersReducedMotion.matches) return;
-      setScrollY(window.scrollY);
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    window.addEventListener('scroll', handleScroll, { passive: true });
-
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('scroll', handleScroll);
+      if (rafId) window.cancelAnimationFrame(rafId);
     };
   }, []);
 
   return (
-    <section 
-      id="home" 
-      className="section hero-heavy" 
-      ref={sectionRef}
-      style={{ paddingBlock: 'clamp(6rem, 12vw, 10rem)', minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}
-    >
-      <div className="container" style={{ position: 'relative', zIndex: 2 }}>
+    <section id="home" className="section hero-heavy" ref={heroRef}>
+      <div className="container hero-container">
         
-        {/* Step 1: Intro */}
-        <div className="hero-reveal" style={{ animationDelay: '100ms', display: 'flex', alignItems: 'center', gap: '2rem', marginBottom: '3rem' }}>
-          <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.85rem', fontWeight: 800, color: 'var(--accent)', letterSpacing: '0.08em' }}>
-            01 / INTRO
-          </div>
-        </div>
-
-        {/* Step 2 & 3: Name Heading & Status */}
-        <div className="hero-title-wrapper" style={{ marginBottom: '3rem' }}>
-          <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(3rem, 11vw, 10rem)', fontWeight: 900, lineHeight: 0.9, letterSpacing: '-0.06em', margin: 0, color: 'var(--text)', textTransform: 'uppercase' }}>
-            <div className="hero-reveal hero-highlight" style={{ animationDelay: '200ms' }}>YATAM</div>
-            <div className="hero-reveal hero-highlight" style={{ animationDelay: '300ms', display: 'flex', alignItems: 'center', gap: 'clamp(1rem, 4vw, 2.5rem)', flexWrap: 'wrap' }}>
-              <span>JITHENDRA</span>
-              <div className="status-indicator-container" style={{ fontSize: 'clamp(0.7rem, 2vw, 1rem)' }}>
-                <div className="status-dot"></div>
-                <div className="status-tooltip">
-                  Currently building projects and learning new technologies.
-                </div>
-              </div>
+        {/* Step 1: Status & Step Index */}
+        <div className="hero-top-meta hero-reveal" style={{ animationDelay: '100ms' }}>
+          <div className="hero-step-label">01 / OVERVIEW</div>
+          <div className="status-indicator-container">
+            <span className="status-dot" aria-hidden="true" />
+            <span className="status-text">AVAILABLE FOR INTERNSHIPS</span>
+            <div className="status-tooltip" role="tooltip">
+              Open to Software Engineering, Backend, &amp; Full-Stack roles (2025/2026).
             </div>
+          </div>
+        </div>
+
+        {/* Step 2: Main Name Title */}
+        <div className="hero-title-block hero-reveal" style={{ animationDelay: '200ms' }}>
+          <h1 className="hero-main-title">
+            <span className="hero-title-name">YATAM JITHENDRA</span>
           </h1>
-        </div>
-
-        {/* Step 4: Role */}
-        <div className="hero-reveal" style={{ animationDelay: '400ms', marginBottom: '2.5rem' }}>
-          <div style={{ fontFamily: 'var(--font-mono)', fontSize: '1.1rem', fontWeight: 800, color: 'var(--muted)', letterSpacing: '0.05em', textTransform: 'uppercase' }}>
-            INFORMATION TECHNOLOGY<br />
-            NIT SRINAGAR
+          <div className="hero-role-title">
+            IT STUDENT &amp; SOFTWARE DEVELOPER
           </div>
         </div>
 
-        {/* Step 5: Description with Interactive Word */}
-        <div className="hero-reveal" style={{ animationDelay: '500ms', marginBottom: '4rem' }}>
-          <p style={{ fontSize: 'clamp(1.1rem, 2vw, 1.4rem)', color: 'var(--text)', maxWidth: '500px', lineHeight: 1.6, margin: 0 }}>
-            I build projects to learn,<br/>
-            <span className="hero-interactive-word">experiment</span> and get better<br/>
-            at software development.
+        {/* Step 3: Supporting Statement */}
+        <div className="hero-statement-block hero-reveal" style={{ animationDelay: '300ms' }}>
+          <p className="hero-summary-text">
+            {personalInfo.tagline}
           </p>
+          <div className="hero-focus-tags">
+            <span className="focus-pill">Backend Engineering</span>
+            <span className="focus-pill">Full-Stack Platforms</span>
+            <span className="focus-pill">Algorithms &amp; DSA</span>
+            <span className="focus-pill">Applied AI / ML</span>
+          </div>
         </div>
 
-        {/* Parallax Metadata & Scroll Arrow Container */}
-        <div style={{ transform: `translateY(${scrollY * 0.15}px)`, transition: 'transform 0.1s linear' }}>
-          
-          {/* Metadata Block */}
-          <div className="hero-reveal" style={{ animationDelay: '600ms', display: 'flex', gap: '2rem', flexWrap: 'wrap', fontFamily: 'var(--font-mono)', fontSize: '0.8rem', fontWeight: 700, color: 'var(--muted)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '4rem' }}>
-            <div>NARSAPUR · INDIA</div>
-            <div>2024 — 2028</div>
-            <div>B.TECH — IT</div>
-            <div>CGPA 7.53</div>
-          </div>
+        {/* Step 4: Primary Recruiter Action CTAs */}
+        <div className="hero-actions-group hero-reveal" style={{ animationDelay: '400ms' }}>
+          <a href="#projects" className="btn-heavy btn-heavy-primary">
+            <FolderGit2 size={16} aria-hidden="true" />
+            <span>VIEW PROJECTS</span>
+          </a>
 
-          {/* Step 8: Scroll Indicator */}
-          <div className="hero-reveal scroll-arrow-container" style={{ animationDelay: '700ms' }}>
-            <div>SCROLL TO EXPLORE</div>
-            <ArrowDown size={20} className="scroll-arrow" />
+          <a
+            href={personalInfo.resumeUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-heavy btn-heavy-secondary"
+            aria-label="View Official Resume in PDF format (opens in new tab)"
+          >
+            <FileText size={16} aria-hidden="true" />
+            <span>RESUME</span>
+          </a>
+
+          <a
+            href={socialLinks.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-heavy btn-heavy-icon"
+            aria-label="Visit Yatam Jithendra GitHub Profile (opens in new tab)"
+            title="GitHub Profile"
+          >
+            <Github size={18} aria-hidden="true" />
+          </a>
+
+          <a
+            href={socialLinks.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-heavy btn-heavy-icon"
+            aria-label="Visit Yatam Jithendra LinkedIn Profile (opens in new tab)"
+            title="LinkedIn Profile"
+          >
+            <Linkedin size={18} aria-hidden="true" />
+          </a>
+        </div>
+
+        {/* Step 5: Academic & Institutional Metadata */}
+        <div className="hero-meta-grid hero-reveal" style={{ animationDelay: '500ms' }}>
+          <div className="hero-meta-card neu-inset">
+            <span className="hero-meta-key">INSTITUTION</span>
+            <span className="hero-meta-val">NIT SRINAGAR</span>
           </div>
-          
+          <div className="hero-meta-card neu-inset">
+            <span className="hero-meta-key">DEGREE</span>
+            <span className="hero-meta-val">B.TECH — IT</span>
+          </div>
+          <div className="hero-meta-card neu-inset">
+            <span className="hero-meta-key">TIMELINE</span>
+            <span className="hero-meta-val">2024 — 2028</span>
+          </div>
+          <div className="hero-meta-card neu-inset">
+            <span className="hero-meta-key">CGPA</span>
+            <span className="hero-meta-val">{personalInfo.cgpa} / 10.0</span>
+          </div>
+        </div>
+
+        {/* Step 6: Scroll Prompt */}
+        <div className="hero-scroll-indicator hero-reveal" style={{ animationDelay: '600ms' }}>
+          <a href="#about" className="scroll-prompt-link" aria-label="Scroll down to About section">
+            <span>SCROLL TO EXPLORE</span>
+            <ArrowDown size={16} className="scroll-arrow-icon" aria-hidden="true" />
+          </a>
         </div>
 
       </div>
