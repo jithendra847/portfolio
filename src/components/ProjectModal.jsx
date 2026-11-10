@@ -102,7 +102,7 @@ export const ProjectModal = ({ selectedSlug, onClose, onSelectProject, triggerId
 
         {/* Header Header */}
         <div className="case-study-header">
-          <div className="case-study-num">{project.num} / 03</div>
+          <div className="case-study-num">{project.num} / {String(projects.length).padStart(2, '0')}</div>
           <h2 id="case-study-title" className="case-study-title">
             {project.title}
           </h2>

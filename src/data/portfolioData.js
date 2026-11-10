@@ -18,7 +18,7 @@ export const personalInfo = {
   aboutEditorial: "INFORMATION TECHNOLOGY STUDENT AT NIT SRINAGAR",
   aboutParagraphs: [
     "I am an Information Technology undergraduate at NIT Srinagar focused on building practical, reliable software systems. I prioritize deep engineering fundamentals—focusing heavily on data structures and algorithms in C++, scalable backend APIs in Python, and reactive user interfaces in JavaScript.",
-    "Rather than treating technologies as abstract concepts, I learn by designing and building end-to-end applications. My flagship work includes F1 Hub, a full-stack telemetry and analytics platform powered by FastAPI, PostgreSQL, and React. I am continuously strengthening my problem-solving capabilities on competitive programming platforms and exploring modern backend architecture and machine learning."
+    "Rather than treating technologies as abstract concepts, I learn by designing and building end-to-end applications. My work spans full-stack platforms (F1 Hub with FastAPI, PostgreSQL, and React), AI-powered tools (OpenSource Compass), bilingual production websites (Anjana Solar), and machine learning projects (cancer classification and e-commerce spend prediction). I am continuously strengthening my problem-solving capabilities on competitive programming platforms and exploring modern backend architecture and machine learning."
   ]
 };
 
@@ -108,6 +108,7 @@ export const skillsCategories = [
   {
     category: "Applied AI / ML",
     skills: [
+      { name: "Scikit-learn", description: "Supervised ML models (Logistic Regression, Linear Regression), preprocessing, and model evaluation pipelines." },
       { name: "Telemetry & Data Analysis", description: "FastF1 data pipeline processing, session analysis, and statistical visualization." },
       { name: "Machine Learning Fundamentals", description: "Exploring core supervised learning algorithms and data pre-processing workflows." }
     ]
@@ -214,17 +215,94 @@ export const arsenalData = [
     description: "Configured development environment for C++, Python, and JavaScript development with integrated debugging.",
     appliedIn: ["Full Development Lifecycle"],
     statusLabel: "PRIMARY EDITOR"
+  },
+  {
+    id: "sklearn",
+    num: "11",
+    name: "Scikit-learn",
+    category: "APPLIED AI / ML",
+    type: "MACHINE LEARNING LIBRARY",
+    description: "Python ML library for supervised learning models, preprocessing pipelines, and evaluation metrics applied in classification and regression projects.",
+    appliedIn: ["Cancer Classification", "E-commerce Spending Prediction"],
+    statusLabel: "ACTIVE ML TOOLKIT"
   }
 ];
 
 export const projects = [
   {
     num: "01",
+    id: "opensource-compass",
+    slug: "opensource-compass",
+    title: "OPENSOURCE COMPASS",
+    tagline: "AI-POWERED OPEN SOURCE ISSUE RECOMMENDER",
+    isFlagship: true,
+    flagshipLabel: "FLAGSHIP — AI TOOL",
+    description: "A Python backend tool that recommends beginner-friendly GitHub issues to developers based on their skills using weighted scoring and smart preprocessing, powered by FastAPI and the GitHub REST API.",
+    technologies: ["PYTHON", "FASTAPI", "GITHUB API", "NLP", "REGEX"],
+    github: "https://github.com/jithendra847/OpenSource-Compass",
+    demo: null,
+    overview: "OpenSource Compass is a recommendation engine that helps developers discover open-source GitHub issues that match their technical skills. It fetches issues from GitHub repositories, preprocesses the content, and scores them using a weighted matching algorithm against a user's declared skill set.",
+    problemMotivation: "Finding the right open-source issue to contribute to is intimidating for newcomers. I wanted to build a tool that programmatically filters and scores GitHub issues by relevance to a developer's skill stack, lowering the barrier to open-source contribution.",
+    architecture: "The system is built as a modular Python backend. A FastAPI app.py exposes endpoints, github_service.py handles GitHub REST API calls with optional label filtering, preprocessing.py cleans and normalizes issue content, and recommendation_engine.py applies regex-boundary skill matching and weighted scoring to rank issues by match percentage.",
+    whatIBuilt: [
+      "Designed a FastAPI backend with a /recommend endpoint that accepts a skills list and returns ranked GitHub issues.",
+      "Implemented smart GitHub issue fetching with optional label filtering (e.g., 'good first issue') via github_service.py.",
+      "Built a preprocessing pipeline that normalizes issue titles and bodies for consistent skill matching.",
+      "Developed a weighted scoring engine using regex word-boundary matching to calculate issue-skill match percentages.",
+      "Structured the project into focused single-responsibility modules for clean extensibility."
+    ],
+    technicalDecisions: [
+      "Used regex word-boundary matching instead of naive substring search to prevent false positives (e.g., matching 'C' inside 'React').",
+      "Chose FastAPI for its async request handling and automatic OpenAPI documentation generation.",
+      "Separated GitHub API logic, preprocessing, and scoring into distinct modules for testability and maintainability."
+    ],
+    challenges: [
+      "Preventing partial skill name matches (e.g., 'C' matching 'React') required regex boundary patterns instead of simple string contains.",
+      "Handling rate limits and varying response structures from the GitHub REST API across different repositories."
+    ],
+    whatILearned: "Gained experience building NLP-adjacent preprocessing pipelines, designing weighted scoring algorithms, and working with the GitHub REST API for data retrieval and filtering."
+  },
+  {
+    num: "02",
+    id: "anjana-solar",
+    slug: "anjana-solar",
+    title: "ANJANA SOLAR",
+    tagline: "BILINGUAL REACT WEBSITE FOR A LOCAL SOLAR BUSINESS",
+    isFlagship: false,
+    description: "A modern, bilingual (English ↔ Telugu) React website built for Anjana Solar Power Systems, a solar service provider in Andhra Pradesh, featuring responsive design, WhatsApp enquiry integration, and custom CSS animations.",
+    technologies: ["REACT", "VITE", "JAVASCRIPT", "REACT ROUTER", "CSS3", "LUCIDE REACT"],
+    github: "https://github.com/jithendra847/anjana-solar",
+    demo: "https://anjana-solar.vercel.app/",
+    overview: "A production website for Anjana Solar Power Systems built to give a local solar business in Narsapuram, West Godavari a professional digital presence. The site presents solar packages, government subsidy and financing information, a Refer & Earn section, Sub-Distributor opportunity, an interactive FAQ, and a direct WhatsApp enquiry flow.",
+    problemMotivation: "Built to give Anjana Solar Power Systems a professional digital presence that moves away from generic solar-company templates. The goals were to present services clearly, surface subsidy information, support English and Telugu customers, and provide a modern engineering-aesthetic design for a local audience.",
+    architecture: "Client-side React SPA built with Vite. React Router handles page navigation, Lucide React provides iconography, and all visual styling is delivered through custom CSS — giving full control over responsive layouts, animations, and component design without relying on a UI framework.",
+    whatIBuilt: [
+      "Implemented a full English ↔ Telugu language switching system across all site sections.",
+      "Designed and built a responsive layout supporting mobile, tablet, and desktop viewports.",
+      "Integrated WhatsApp deep links for direct customer enquiry flows.",
+      "Developed sections for solar solutions, subsidy and financing information, Refer & Earn, and Sub-Distributor opportunities.",
+      "Built an interactive FAQ component with custom expand/collapse animations.",
+      "Authored a custom CSS design system with editorial typography, structured layouts, and motion effects."
+    ],
+    technicalDecisions: [
+      "Used custom CSS instead of a UI framework to retain full visual control over layout, motion, and component styling.",
+      "Chose React Router for clean multi-page navigation without full page reloads.",
+      "Implemented bilingual support through a custom language-context pattern rather than a third-party i18n library."
+    ],
+    challenges: [
+      "Synchronizing bilingual text content across all sections required careful state management to avoid inconsistency on language switch.",
+      "Delivering a modern engineering aesthetic while ensuring clarity and approachability for local, non-technical customers."
+    ],
+    whatILearned: "Practiced full client-side project delivery from requirements to production deployment: audience-aware design, bilingual content architecture, React Router navigation, and responsive CSS systems without framework dependencies."
+  },
+  {
+    num: "03",
     id: "f1-hub",
     slug: "f1-hub",
     title: "F1 HUB",
     tagline: "FULL-STACK FORMULA 1 ANALYTICS PLATFORM",
     isFlagship: true,
+    flagshipLabel: "FLAGSHIP FULL-STACK",
     description: "A full-stack Formula 1 analytics platform integrating race data, standings, schedules and interactive visualizations through a React frontend, FastAPI backend and PostgreSQL data layer.",
     technologies: ["REACT", "JAVASCRIPT", "FASTAPI", "PYTHON", "POSTGRESQL", "SQLALCHEMY", "FASTF1", "RECHARTS", "TAILWIND CSS"],
     github: "https://github.com/jithendra847/f1-hub",
@@ -252,7 +330,7 @@ export const projects = [
     whatILearned: "Deepened my practical understanding of full-stack system architecture, asynchronous Python backend workflows, SQL schema modeling, and connecting frontend visualization components with real-world data pipelines."
   },
   {
-    num: "02",
+    num: "04",
     id: "to-do-list",
     slug: "to-do-list",
     title: "TO-DO LIST",
@@ -282,7 +360,7 @@ export const projects = [
     whatILearned: "Gained solid practical experience with accessible pointer events, React render optimization, and managing client-side persistent storage."
   },
   {
-    num: "03",
+    num: "05",
     id: "camera-opener",
     slug: "camera-opener",
     title: "CAMERA OPENER",
@@ -309,6 +387,140 @@ export const projects = [
       "Managing consistent frame rate timing inside the processing loop."
     ],
     whatILearned: "Understood C++ hardware interfacing, video matrix representation (cv::Mat), memory cleanup lifecycles, and desktop windowing systems."
+  },
+  {
+    num: "06",
+    id: "riscv-processor",
+    slug: "riscv-processor",
+    title: "RISC-V PROCESSOR",
+    tagline: "SINGLE-CYCLE 32-BIT HARDWARE DESIGN",
+    isFlagship: false,
+    description: "Designed and simulated a 32-bit single-cycle RISC-V processor in Verilog HDL, implementing core datapath and control logic for instruction execution, memory operations, and control flow.",
+    technologies: ["VERILOG HDL", "RV32I", "ICARUS VERILOG", "GTKWAVE"],
+    github: "https://github.com/jithendra847/RISCV-single-cycle-processor",
+    demo: null,
+    overview: "A 32-bit single-cycle processor design based on the RISC-V RV32I instruction set, built entirely in Verilog HDL. The processor features a modular hardware design covering the full instruction lifecycle—from instruction fetch through register writeback—verified through Verilog testbenches and simulated with Icarus Verilog.",
+    problemMotivation: "Designed to develop a concrete understanding of computer architecture fundamentals: how a CPU fetches, decodes, and executes instructions at the register-transfer level, and how control signals coordinate the datapath across a single clock cycle.",
+    architecture: "The processor implements a classic single-cycle datapath with five conceptual stages: Instruction Fetch (PC register and instruction memory), Instruction Decode (control unit and register file read), Execute (32-bit ALU), Memory Access (data memory for load/store), and Writeback (register file write). A dedicated control unit decodes opcodes and drives all datapath multiplexers and memory write-enables. The 32-register file enforces that x0 always reads as zero.",
+    whatIBuilt: [
+      "Implemented the full single-cycle datapath in modular Verilog: program counter, instruction memory, register file (x0–x31), 32-bit ALU, data memory, and control unit.",
+      "Supported arithmetic and logic instructions: ADD, SUB, AND, OR, XOR, SLT, SLL, SRL.",
+      "Supported immediate-type operations: ADDI, ANDI, ORI, XORI, SLTI, SLLI, SRLI.",
+      "Implemented word-level memory operations: LW (load word) and SW (store word).",
+      "Added control-flow instructions: BEQ, BNE (conditional branches) and JAL (jump-and-link).",
+      "Wrote Verilog testbench modules and a run_project.sh shell script for automated verification, interactive simulation, and Icarus Verilog compilation.",
+      "Supported waveform tracing via GTKWave from Icarus Verilog simulation output."
+    ],
+    technicalDecisions: [
+      "Chose a single-cycle design to keep control logic straightforward and make data flow between stages directly traceable during simulation.",
+      "Enforced the x0 = 0 architectural convention at the register file level, matching the RISC-V specification.",
+      "Separated instruction memory and data memory to reflect the Harvard-style model used in classic single-cycle RISC designs.",
+      "Used a centralised control unit to generate all datapath control signals from a single opcode decode, simplifying testbench verification."
+    ],
+    challenges: [
+      "Routing control signals for branch and jump instructions required careful PC update logic to correctly distinguish sequential, branch-taken, and JAL targets.",
+      "Ensuring consistent sign-extension of immediates across all instruction formats (I-type, S-type, B-type, J-type) before feeding them into the ALU.",
+      "Debugging simulation mismatches by tracing signal transitions in GTKWave waveform output across multiple test cases."
+    ],
+    whatILearned: "Deepened my understanding of CPU microarchitecture: how opcodes map to control signals, how a register file enforces architectural conventions, and how single-cycle designs trade performance for simplicity. Gained practical Verilog HDL skills including testbench authoring and waveform-driven debugging."
+  },
+  {
+    num: "07",
+    id: "signal-encoder-decoder",
+    slug: "signal-encoder-decoder",
+    title: "SIGNAL ENCODER–DECODER",
+    tagline: "DATA COMMUNICATION ENCODING TOOLKIT",
+    isFlagship: false,
+    description: "Built a Python-based signal encoding and decoding toolkit to explore digital line coding, scrambling, and waveform visualization through modular implementations using NumPy and Matplotlib.",
+    technologies: ["PYTHON", "NUMPY", "MATPLOTLIB", "PILLOW"],
+    github: "https://github.com/jithendra847/SIgnal-Encoder-Decoder",
+    demo: null,
+    overview: "A Python project for exploring digital signal encoding and decoding concepts from data communication. Built across incremental milestones, it implements line coding schemes, scrambling techniques, and waveform visualization—providing a hands-on companion to data communication coursework.",
+    problemMotivation: "Developed to bridge the gap between textbook data communication theory and practical implementation: seeing how binary data is transformed into line-coded waveforms, how scrambling handles long runs of zeros, and how the resulting signals can be visualised algorithmically.",
+    architecture: "The project is structured around independent Python modules, each implementing a specific encoding algorithm. NumPy handles numerical signal arrays, Matplotlib renders waveform plots, and Pillow is used for image I/O. Each milestone is self-contained, allowing individual techniques to be studied and tested in isolation.",
+    whatIBuilt: [
+      "Implemented digital line coding schemes: NRZ-L, NRZ-I, Manchester, Differential Manchester, and AMI—encoding binary data streams into corresponding signal waveforms.",
+      "Added B8ZS scrambling to handle long zero sequences in high-density bipolar transmission.",
+      "Built waveform visualization using Matplotlib, rendering encoded signals as step-function plots with clear bit boundaries and amplitude labels.",
+      "Structured the project with modular Python source files so each encoding technique can be developed and tested independently.",
+      "Used NumPy arrays throughout for efficient signal construction and waveform coordinate generation.",
+      "Set up a requirements file (requirements.txt) with NumPy, Matplotlib, and Pillow for clear Python 3.10+ dependency management."
+    ],
+    technicalDecisions: [
+      "Chose Python for rapid prototyping and the availability of NumPy and Matplotlib as a natural signal-processing and visualization stack.",
+      "Kept each encoding scheme in its own module to make the codebase easy to extend with additional techniques as further milestones are completed.",
+      "Used step-function plotting conventions in Matplotlib to accurately represent the level-hold characteristic of digital line codes."
+    ],
+    challenges: [
+      "Accurately representing differential encoding schemes (NRZ-I, Differential Manchester) required careful tracking of the previous signal state across bit boundaries.",
+      "AMI encoding requires maintaining a running polarity context across the entire bit stream, necessitating a stateful approach rather than a simple per-bit mapping.",
+      "Generating visually correct waveforms with exact bit-boundary transitions required careful NumPy coordinate construction using repeat and interleaving patterns."
+    ],
+    whatILearned: "Gained practical experience implementing data communication encoding algorithms, reinforcing how different line coding schemes handle synchronisation, DC balance, and long-run-length constraints. Strengthened Python signal-processing skills and learned to use Matplotlib effectively for technical waveform visualization."
+  },
+  {
+    num: "08",
+    id: "cancer-classification",
+    slug: "cancer-classification",
+    title: "CANCER CLASSIFICATION",
+    tagline: "BREAST CANCER ML BINARY CLASSIFIER",
+    isFlagship: false,
+    description: "A Machine Learning project using Logistic Regression to classify breast tumours as Malignant or Benign from the Wisconsin Diagnostic dataset, achieving ~99% test accuracy with scikit-learn.",
+    technologies: ["PYTHON", "SCIKIT-LEARN", "PANDAS", "NUMPY", "SEABORN", "JUPYTER NOTEBOOK"],
+    github: "https://github.com/jithendra847/Cancer-Classification",
+    demo: null,
+    overview: "A supervised binary classification project that applies Logistic Regression to the Breast Cancer Wisconsin (Diagnostic) dataset to predict whether a tumour is malignant or benign. The project covers the full ML pipeline: data loading, EDA, preprocessing, feature scaling, model training, and evaluation with classification metrics.",
+    problemMotivation: "Developed to gain hands-on experience with the end-to-end supervised machine learning workflow on a real medical dataset—moving beyond textbook theory into exploratory analysis, feature standardization, and model evaluation on meaningful clinical data.",
+    architecture: "Single-notebook Jupyter project structured into sequential analysis cells: data ingestion with Pandas, EDA and visualization with Seaborn, feature scaling with StandardScaler, Logistic Regression training with scikit-learn, and evaluation using accuracy, precision, recall, and F1-score.",
+    whatIBuilt: [
+      "Loaded and explored the 569-sample, 30-feature Breast Cancer Wisconsin dataset using Pandas.",
+      "Performed exploratory data analysis to visualize feature distributions and diagnosis category frequencies with Seaborn.",
+      "Applied StandardScaler to normalize all numerical features before model training.",
+      "Trained a Logistic Regression binary classifier using scikit-learn on a 70:30 train-test split.",
+      "Evaluated model performance with accuracy, precision, recall, and F1-score, achieving approximately 99% test accuracy."
+    ],
+    technicalDecisions: [
+      "Chose Logistic Regression as the model to study probabilistic binary classification using the sigmoid function.",
+      "Applied StandardScaler before training to prevent features with larger magnitudes from dominating the optimization process.",
+      "Used a 70:30 train-test split to retain a meaningful evaluation set while keeping sufficient training data."
+    ],
+    challenges: [
+      "Identifying and removing unnecessary columns (such as unnamed ID columns) to prevent leakage or noise during training.",
+      "Interpreting precision-recall trade-offs for a medical classification task where false negatives carry higher risk than false positives."
+    ],
+    whatILearned: "Developed a concrete understanding of the full supervised ML pipeline: data cleaning, EDA, feature scaling, logistic regression training, and reading multi-class classification reports. Reinforced how StandardScaler and proper train-test splits affect model generalization."
+  },
+  {
+    num: "09",
+    id: "ecommerce-spending-prediction",
+    slug: "ecommerce-spending-prediction",
+    title: "E-COMMERCE SPENDING PREDICTION",
+    tagline: "LINEAR REGRESSION CUSTOMER SPEND PREDICTOR",
+    isFlagship: false,
+    description: "A Python ML project using Linear Regression to predict the yearly amount spent by e-commerce customers based on behavioural features like session length, app time, and membership duration.",
+    technologies: ["PYTHON", "SCIKIT-LEARN", "PANDAS", "NUMPY", "SEABORN", "JUPYTER NOTEBOOK"],
+    github: "https://github.com/jithendra847/E-commerce-spending-prediction",
+    demo: null,
+    overview: "A regression ML project that explores how customer behaviour features—average session length, time on app, time on website, and membership length—correlate with and predict annual spending on an e-commerce platform. It includes exploratory data analysis, visualization of feature relationships, and a trained Linear Regression model evaluated with standard regression metrics.",
+    problemMotivation: "Built to explore regression modelling on a customer behaviour dataset—understanding which features drive yearly spending and how to quantify prediction error through regression metrics.",
+    architecture: "Single-notebook Jupyter project structured into EDA, feature visualization, model training, prediction, and evaluation phases using Pandas for data manipulation, Seaborn and Matplotlib for visualization, and scikit-learn for the Linear Regression model.",
+    whatIBuilt: [
+      "Loaded and explored an e-commerce customer dataset with features including session length, time on app, time on website, and length of membership.",
+      "Performed EDA and visualized feature-to-target correlations using Seaborn joint plots and pair plots.",
+      "Built and trained a Linear Regression model using scikit-learn on a train-test split of the dataset.",
+      "Generated predictions on the test set and evaluated the model using MAE, MSE, RMSE, and R² score.",
+      "Interpreted model coefficients to identify which features most strongly influence yearly customer spending."
+    ],
+    technicalDecisions: [
+      "Selected Linear Regression to study continuous-value regression modelling and coefficient interpretation.",
+      "Used Seaborn joint plots to visualize pairwise relationships between individual features and the target variable before modelling.",
+      "Evaluated with multiple regression metrics (MAE, MSE, RMSE, R²) to get a complete picture of model accuracy and error distribution."
+    ],
+    challenges: [
+      "Identifying which features have meaningful linear relationships with the target variable before model training to inform feature selection decisions.",
+      "Interpreting model coefficients correctly to understand the direction and magnitude of each feature's influence on predicted spending."
+    ],
+    whatILearned: "Strengthened practical regression modelling skills: EDA-driven feature analysis, interpreting Linear Regression coefficients, and evaluating model quality using multiple complementary metrics. Deepened experience with Pandas, Seaborn, and scikit-learn for the full data-to-model pipeline."
   }
 ];
 

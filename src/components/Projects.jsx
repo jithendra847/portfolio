@@ -28,7 +28,7 @@ export const Projects = ({ onOpenCaseStudy }) => {
                     {project.isFlagship && (
                       <span className="flagship-badge">
                         <Star size={12} aria-hidden="true" />
-                        <span>FLAGSHIP FULL-STACK</span>
+                        <span>{project.flagshipLabel || "FLAGSHIP"}</span>
                       </span>
                     )}
                   </div>
